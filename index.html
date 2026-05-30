@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Word Defender | Sign Up + Leaderboard + Ads</title>
+    <title>Word Defender | Global Leaderboard</title>
     <style>
         * {
             user-select: none;
@@ -21,7 +21,6 @@
             padding: 20px;
         }
 
-        /* MAIN LAYOUT */
         .game-layout {
             display: flex;
             gap: 20px;
@@ -32,7 +31,6 @@
             flex-wrap: wrap;
         }
 
-        /* LEFT PANEL - INSTRUCTIONS + AUTH */
         .left-panel {
             flex: 0 0 260px;
             display: flex;
@@ -85,12 +83,6 @@
             color: #cbd5e1;
         }
 
-        .big-text {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #facc15;
-        }
-
         .tip-box {
             background: #2d3748;
             border-radius: 12px;
@@ -98,10 +90,8 @@
             margin-top: 15px;
             text-align: center;
             font-size: 0.8rem;
-            color: #e2e8f0;
         }
 
-        /* AUTH PANEL */
         .auth-input {
             width: 100%;
             padding: 10px;
@@ -125,6 +115,9 @@
             font-size: 0.9rem;
             color: white;
             font-weight: bold;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
         }
 
         .auth-btn.green {
@@ -137,7 +130,6 @@
             padding: 8px;
             background: #0f1724;
             border-radius: 20px;
-            color: #e2e8f0;
         }
 
         .logout-btn {
@@ -145,10 +137,12 @@
             padding: 5px 12px;
             font-size: 0.8rem;
             margin-top: 8px;
+            border: none;
+            border-radius: 40px;
             color: white;
+            cursor: pointer;
         }
 
-        /* MIDDLE PANEL - GAME */
         .game-container {
             background: #1e2a3a;
             border-radius: 32px;
@@ -187,10 +181,8 @@
             color: #facc15;
             font-size: 1.3rem;
             margin-left: 5px;
-            font-weight: bold;
         }
 
-        /* PROGRESS BAR */
         .progress-container {
             margin: 15px 0;
             background: #0f1724;
@@ -204,7 +196,6 @@
             margin-bottom: 8px;
             font-size: 0.8rem;
             color: #cbd5e1;
-            font-weight: bold;
         }
 
         .progress-bar-bg {
@@ -246,16 +237,6 @@
             color: #0f1724;
         }
 
-        #wordInput::placeholder {
-            color: #64748b;
-            font-weight: normal;
-        }
-
-        #wordInput:disabled {
-            background: #475569;
-            color: #cbd5e1;
-        }
-
         button {
             background: #3b82f6;
             border: none;
@@ -266,37 +247,14 @@
             font-family: monospace;
             cursor: pointer;
             transition: 0.1s;
-            font-size: 0.9rem;
         }
 
-        button:active {
-            transform: scale(0.96);
-        }
+        button:active { transform: scale(0.96); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .reward-btn {
-            background: #eab308;
-            color: #0f1724;
-            font-weight: bold;
-        }
-
-        .restart-btn {
-            background: #ef4444;
-            color: white;
-        }
-
-        .start-btn {
-            background: #22c55e;
-            font-size: 1.2rem;
-            padding: 12px 25px;
-            animation: pulse 1.5s infinite;
-            color: white;
-            font-weight: bold;
-        }
+        .reward-btn { background: #eab308; color: #0f1724; }
+        .restart-btn { background: #ef4444; }
+        .start-btn { background: #22c55e; font-size: 1.2rem; padding: 12px 25px; animation: pulse 1.5s infinite; }
 
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
@@ -304,14 +262,8 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0); }
         }
 
-        .controls {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-            justify-content: center;
-        }
+        .controls { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
 
-        /* RIGHT PANEL - LEADERBOARD + ADS */
         .right-panel {
             flex: 0 0 300px;
             display: flex;
@@ -328,13 +280,7 @@
             border: 1px solid #facc15;
         }
 
-        .leaderboard-panel h2 {
-            color: #facc15;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+        .leaderboard-panel h2 { color: #facc15; text-align: center; margin-top: 0; margin-bottom: 15px; }
 
         .leaderboard-list {
             list-style: none;
@@ -357,15 +303,9 @@
         .leaderboard-list li:nth-child(2) { border-left: 4px solid #94a3b8; }
         .leaderboard-list li:nth-child(3) { border-left: 4px solid #cd7f32; }
 
-        .rank {
-            color: #facc15;
-        }
+        .rank { color: #facc15; }
+        .score-display { color: #facc15; }
 
-        .score-display {
-            color: #facc15;
-        }
-
-        /* AD PANEL */
         .ad-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -374,31 +314,19 @@
             border: 2px dashed #facc15;
         }
 
-        .ad-panel h3 {
-            color: #facc15;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
+        .ad-panel h3 { color: #facc15; margin-top: 0; margin-bottom: 15px; }
 
         .ad-placeholder {
             background: #0f1724;
             border-radius: 20px;
             padding: 20px;
             color: #cbd5e1;
-            font-size: 0.9rem;
             border: 1px solid #334155;
             min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .ad-label {
-            font-size: 0.7rem;
-            color: #facc15;
-            margin-bottom: 10px;
         }
 
         .start-overlay {
@@ -416,9 +344,7 @@
             z-index: 10;
         }
 
-        .game-area {
-            position: relative;
-        }
+        .game-area { position: relative; }
 
         .level-up-animation {
             position: fixed;
@@ -454,7 +380,6 @@
 </head>
 <body>
 <div class="game-layout">
-    <!-- LEFT PANEL: INSTRUCTIONS + AUTH -->
     <div class="left-panel">
         <div class="instructions-panel">
             <h2>🎮 HOW TO PLAY</h2>
@@ -463,7 +388,7 @@
             <div class="instruction-step"><span class="key">3</span><p>LOOK at falling words</p></div>
             <div class="instruction-step"><span class="key">4</span><p>TYPE the word exactly → auto destroy!</p></div>
             <div class="instruction-step"><span class="key">␣ SPACE</span><p>Clear mistyped word</p></div>
-            <div class="tip-box">💡 Each level = 20 points!<br>BOSS words = +3 points!<br>🏆 Beat your high score!</div>
+            <div class="tip-box">💡 Each level = 20 points!<br>BOSS words = +3 points!<br>🏆 GLOBAL leaderboard!</div>
         </div>
 
         <div class="auth-panel" id="authPanel">
@@ -484,7 +409,6 @@
         </div>
     </div>
 
-    <!-- MIDDLE PANEL: GAME -->
     <div class="game-container">
         <div class="info-panel">
             <div class="score">📝 SCORE <span id="scoreValue">0</span></div>
@@ -518,69 +442,71 @@
         </div>
     </div>
 
-    <!-- RIGHT PANEL: LEADERBOARD + ADS -->
     <div class="right-panel">
-        <!-- LEADERBOARD -->
         <div class="leaderboard-panel">
-            <h2>🏆 LEADERBOARD 🏆</h2>
+            <h2>🏆 GLOBAL LEADERBOARD 🏆</h2>
             <ul class="leaderboard-list" id="leaderboardList">
-                <li>🔴 Login to see scores</li>
+                <li>🌐 Loading global scores...</li>
             </ul>
         </div>
 
-        <!-- AD BANNER -->
         <div class="ad-panel">
             <h3>📺 SPONSORED CONTENT</h3>
             <div class="ad-placeholder">
                 <div class="ad-label">▼ ADVERTISEMENT ▼</div>
                 🎯 300x250 BANNER<br><br>
-                <span style="font-size:0.7rem; color:#94a3b8;">Replace with AdSense code</span>
+                <span style="font-size:0.7rem;">Replace with AdSense code</span>
             </div>
-            <p style="font-size:0.7rem; margin-top:10px; margin-bottom:0; color:#94a3b8;">Ads help keep this game free ❤️</p>
+            <p style="font-size:0.7rem; margin-top:10px;">Ads keep this game free ❤️</p>
         </div>
     </div>
 </div>
 
 <script>
-    (function(){
-        // -------------------- DATABASE (LocalStorage) --------------------
-        let users = JSON.parse(localStorage.getItem('wordDefender_users')) || {};
-        let currentUser = null;
-        let currentUserBest = 0;
+    // ===== BACKEND CONFIGURATION =====
+    // !!! IMPORTANT: Change this to your Render backend URL !!!
+    const API_URL = 'https://word-defender-api.onrender.com/api';
+    
+    let currentUser = null;
+    let currentUserBest = 0;
 
-        // Leaderboard entries: { username, bestScore }
-        function updateLeaderboard() {
-            const leaderboard = [];
-            for (let username in users) {
-                if (users[username].bestScore !== undefined) {
-                    leaderboard.push({ username, bestScore: users[username].bestScore });
-                }
-            }
-            leaderboard.sort((a,b) => b.bestScore - a.bestScore);
-            const leaderboardList = document.getElementById('leaderboardList');
-            leaderboardList.innerHTML = '';
+    async function apiCall(endpoint, method = 'GET', data = null) {
+        const options = {
+            method,
+            headers: { 'Content-Type': 'application/json' }
+        };
+        if (data) options.body = JSON.stringify(data);
+        
+        const response = await fetch(`${API_URL}${endpoint}`, options);
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'API error');
+        return result;
+    }
+
+    async function updateGlobalLeaderboard() {
+        try {
+            const leaderboard = await apiCall('/leaderboard');
+            const listElement = document.getElementById('leaderboardList');
+            listElement.innerHTML = '';
             if (leaderboard.length === 0) {
-                leaderboardList.innerHTML = '<li>⚡ No players yet! Sign up!</li>';
+                listElement.innerHTML = '<li>⚡ No players yet! Be first!</li>';
                 return;
             }
-            for (let i = 0; i < Math.min(10, leaderboard.length); i++) {
-                const entry = leaderboard[i];
+            leaderboard.forEach((player, index) => {
                 const li = document.createElement('li');
-                li.innerHTML = `<span class="rank">${i+1}. ${entry.username}</span><span class="score-display">${entry.bestScore}</span>`;
-                leaderboardList.appendChild(li);
-            }
+                li.innerHTML = `<span class="rank">${index + 1}. ${player.username}</span><span class="score-display">${player.bestScore}</span>`;
+                listElement.appendChild(li);
+            });
+        } catch (error) {
+            document.getElementById('leaderboardList').innerHTML = '<li>⚠️ Loading...</li>';
         }
+    }
 
-        function saveUser(username, password, bestScore = 0) {
-            users[username] = { password, bestScore };
-            localStorage.setItem('wordDefender_users', JSON.stringify(users));
-        }
-
-        function login(username, password) {
-            if (!users[username]) return false;
-            if (users[username].password !== password) return false;
-            currentUser = username;
-            currentUserBest = users[username].bestScore || 0;
+    async function signup(username, password) {
+        try {
+            const data = await apiCall('/signup', 'POST', { username, password });
+            currentUser = data.username;
+            currentUserBest = data.bestScore;
             document.getElementById('currentUser').innerText = currentUser;
             document.getElementById('userBestScore').innerText = currentUserBest;
             document.getElementById('bestScoreDisplay').innerText = currentUserBest;
@@ -588,308 +514,307 @@
             document.getElementById('userInfo').style.display = 'block';
             document.getElementById('wordInput').disabled = false;
             document.getElementById('rewardLifeBtn').disabled = false;
-            document.getElementById('wordInput').placeholder = "Login success! Press START...";
-            updateLeaderboard();
+            document.getElementById('wordInput').placeholder = "Logged in! Press START...";
+            updateGlobalLeaderboard();
             return true;
-        }
-
-        function signup(username, password) {
-            if (users[username]) return false;
-            if (username.length < 2) return false;
-            if (password.length < 2) return false;
-            saveUser(username, password, 0);
-            return login(username, password);
-        }
-
-        function logout() {
-            currentUser = null;
-            currentUserBest = 0;
-            document.getElementById('authForm').style.display = 'block';
-            document.getElementById('userInfo').style.display = 'none';
-            document.getElementById('wordInput').disabled = true;
-            document.getElementById('rewardLifeBtn').disabled = true;
-            document.getElementById('wordInput').placeholder = "LOGIN TO PLAY...";
-            document.getElementById('bestScoreDisplay').innerText = '0';
-            if (gameActive) {
-                gameActive = false;
-                if (animationId) cancelAnimationFrame(animationId);
-                enableStartOverlay(true);
-            }
-            updateLeaderboard();
-        }
-
-        function updateUserBestScore(score) {
-            if (!currentUser) return;
-            if (score > currentUserBest) {
-                currentUserBest = score;
-                users[currentUser].bestScore = score;
-                localStorage.setItem('wordDefender_users', JSON.stringify(users));
-                document.getElementById('userBestScore').innerText = currentUserBest;
-                document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-                updateLeaderboard();
-            }
-        }
-
-        // -------------------- GAME CODE --------------------
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        let width = 700, height = 450;
-        canvas.width = width; canvas.height = height;
-
-        let score = 0, level = 1, lives = 10, gameActive = false, animationId = null;
-        const POINTS_PER_LEVEL = 20;
-        let pointsInCurrentLevel = 0;
-
-        const baseWordPool = [
-            "CAT","DOG","SUN","CAR","BALL","TREE","FISH","BIRD","STAR","MOON",
-            "HAT","CUP","BAG","ANT","BEE","EGG","EYE","ARM","LEG","TOY",
-            "RED","BLUE","BIG","HOT","COLD","WET","DRY","FUN","RUN","JUMP",
-            "FLY","BUG","FOX","PIG","COW","RAT","LIP","TOE","EAR","NOSE"
-        ];
-        const advancedWords = ["CLOUD","FLOWER","CANDY","PUPPY","KITTEN","TIGER","EAGLE","HAPPY"];
-        const bossWords = ["!!!BOSS!!!","RAINBOW","DRAGON"];
-
-        function getCurrentWordPool() {
-            let pool = [...baseWordPool];
-            if (level >= 5) pool.push(...advancedWords);
-            if (level >= 10) pool.push(...bossWords);
-            return pool;
-        }
-
-        let fallingWords = [];
-        let framesSinceLastSpawn = 0;
-        let spawnDelayFrames = 70;
-        let currentSpeedMultiplier = 0.5;
-        let currentSpawnDelay = 70;
-        let currentInput = "";
-
-        const wordInput = document.getElementById('wordInput');
-        const startOverlay = document.getElementById('startOverlay');
-        const startBtn = document.getElementById('startGameBtn');
-        const rewardBtn = document.getElementById('rewardLifeBtn');
-        const restartBtn = document.getElementById('restartBtn');
-
-        function updateProgressBar() {
-            const pct = (pointsInCurrentLevel / POINTS_PER_LEVEL) * 100;
-            document.getElementById('progressFill').style.width = pct + '%';
-            document.getElementById('progressText').innerHTML = `${pointsInCurrentLevel} / ${POINTS_PER_LEVEL}`;
-        }
-
-        function updateUI() {
-            document.getElementById('scoreValue').innerText = score;
-            document.getElementById('livesValue').innerText = lives;
-            document.getElementById('levelValue').innerText = level;
-            if (currentUser) document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-        }
-
-        function randomWord() {
-            const pool = getCurrentWordPool();
-            return pool[Math.floor(Math.random() * pool.length)];
-        }
-
-        function spawnWord() {
-            if (!gameActive) return;
-            const wordText = randomWord();
-            const x = 20 + Math.random() * (width - 80);
-            let speed = 0.35 + Math.random() * 0.65;
-            speed *= currentSpeedMultiplier;
-            let points = 1, isBoss = false;
-            if (bossWords.includes(wordText)) { points = 3; isBoss = true; speed *= 0.5; }
-            else if (advancedWords.includes(wordText)) points = 2;
-            fallingWords.push({ text: wordText, x, y: 20, speed, points, isBoss });
-        }
-
-        function updateLevel() {
-            let newLevel = Math.floor(score / POINTS_PER_LEVEL) + 1;
-            if (newLevel > 20) newLevel = 20;
-            if (newLevel !== level) {
-                level = newLevel;
-                updateUI();
-                const div = document.createElement('div');
-                div.className = 'level-up-animation';
-                div.textContent = `✨ LEVEL ${level} ✨`;
-                document.body.appendChild(div);
-                setTimeout(() => div.remove(), 1000);
-                currentSpawnDelay = Math.max(40, 70 - (level-1)*1);
-                currentSpeedMultiplier = 0.5 + (level-1)*0.025;
-                if (currentSpeedMultiplier > 1.15) currentSpeedMultiplier = 1.15;
-                spawnDelayFrames = currentSpawnDelay;
-            }
-            pointsInCurrentLevel = score % POINTS_PER_LEVEL;
-            updateProgressBar();
-        }
-
-        function updateWords() {
-            if (!gameActive) return;
-            for (let i=0; i<fallingWords.length; i++) {
-                fallingWords[i].y += fallingWords[i].speed;
-                if (fallingWords[i].y + 25 >= height) {
-                    fallingWords.splice(i,1);
-                    i--;
-                    lives--;
-                    updateUI();
-                    if (lives <= 0) {
-                        gameActive = false;
-                        if (currentUser) updateUserBestScore(score);
-                        enableStartOverlay(true);
-                        if (animationId) cancelAnimationFrame(animationId);
-                        animationId = null;
-                        draw();
-                        showInterstitialAd(()=>{});
-                        return;
-                    }
-                }
-            }
-        }
-
-        function autoShootIfMatches() {
-            if (!gameActive || !currentInput.trim()) return false;
-            const upper = currentInput.trim().toUpperCase();
-            for (let i=0; i<fallingWords.length; i++) {
-                if (fallingWords[i].text === upper) {
-                    score += fallingWords[i].points;
-                    fallingWords.splice(i,1);
-                    updateUI();
-                    updateLevel();
-                    currentInput = "";
-                    wordInput.value = "";
-                    wordInput.style.backgroundColor = "#bbf7d0";
-                    setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 150);
-                    return true;
-                }
-            }
+        } catch (error) {
+            alert(error.message);
             return false;
         }
+    }
 
-        function clearInputWithFeedback() {
-            if (currentInput.length) {
+    async function login(username, password) {
+        try {
+            const data = await apiCall('/login', 'POST', { username, password });
+            currentUser = data.username;
+            currentUserBest = data.bestScore;
+            document.getElementById('currentUser').innerText = currentUser;
+            document.getElementById('userBestScore').innerText = currentUserBest;
+            document.getElementById('bestScoreDisplay').innerText = currentUserBest;
+            document.getElementById('authForm').style.display = 'none';
+            document.getElementById('userInfo').style.display = 'block';
+            document.getElementById('wordInput').disabled = false;
+            document.getElementById('rewardLifeBtn').disabled = false;
+            document.getElementById('wordInput').placeholder = "Logged in! Press START...";
+            updateGlobalLeaderboard();
+            return true;
+        } catch (error) {
+            alert(error.message);
+            return false;
+        }
+    }
+
+    async function updateUserBestScore(score) {
+        if (!currentUser) return;
+        if (score > currentUserBest) {
+            try {
+                const data = await apiCall('/update-score', 'POST', { username: currentUser, score });
+                currentUserBest = data.bestScore;
+                document.getElementById('userBestScore').innerText = currentUserBest;
+                document.getElementById('bestScoreDisplay').innerText = currentUserBest;
+                updateGlobalLeaderboard();
+            } catch (error) {
+                console.error('Failed to update score:', error);
+            }
+        }
+    }
+
+    function logout() {
+        currentUser = null;
+        currentUserBest = 0;
+        document.getElementById('authForm').style.display = 'block';
+        document.getElementById('userInfo').style.display = 'none';
+        document.getElementById('wordInput').disabled = true;
+        document.getElementById('rewardLifeBtn').disabled = true;
+        document.getElementById('wordInput').placeholder = "LOGIN TO PLAY...";
+        document.getElementById('bestScoreDisplay').innerText = '0';
+        if (gameActive) {
+            gameActive = false;
+            if (animationId) cancelAnimationFrame(animationId);
+            enableStartOverlay(true);
+        }
+        updateGlobalLeaderboard();
+    }
+
+    // ===== GAME CODE =====
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    let width = 700, height = 450;
+    canvas.width = width; canvas.height = height;
+
+    let score = 0, level = 1, lives = 10, gameActive = false, animationId = null;
+    const POINTS_PER_LEVEL = 20;
+    let pointsInCurrentLevel = 0;
+
+    const baseWordPool = [
+        "CAT","DOG","SUN","CAR","BALL","TREE","FISH","BIRD","STAR","MOON",
+        "HAT","CUP","BAG","ANT","BEE","EGG","EYE","ARM","LEG","TOY",
+        "RED","BLUE","BIG","HOT","COLD","WET","DRY","FUN","RUN","JUMP",
+        "FLY","BUG","FOX","PIG","COW","RAT","LIP","TOE","EAR","NOSE"
+    ];
+    const advancedWords = ["CLOUD","FLOWER","CANDY","PUPPY","KITTEN","TIGER","EAGLE","HAPPY"];
+    const bossWords = ["!!!BOSS!!!","RAINBOW","DRAGON"];
+
+    function getCurrentWordPool() {
+        let pool = [...baseWordPool];
+        if (level >= 5) pool.push(...advancedWords);
+        if (level >= 10) pool.push(...bossWords);
+        return pool;
+    }
+
+    let fallingWords = [];
+    let framesSinceLastSpawn = 0;
+    let spawnDelayFrames = 70;
+    let currentSpeedMultiplier = 0.5;
+    let currentSpawnDelay = 70;
+    let currentInput = "";
+
+    const wordInput = document.getElementById('wordInput');
+    const startOverlay = document.getElementById('startOverlay');
+    const startBtn = document.getElementById('startGameBtn');
+    const rewardBtn = document.getElementById('rewardLifeBtn');
+    const restartBtn = document.getElementById('restartBtn');
+
+    function updateProgressBar() {
+        const pct = (pointsInCurrentLevel / POINTS_PER_LEVEL) * 100;
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressText').innerHTML = `${pointsInCurrentLevel} / ${POINTS_PER_LEVEL}`;
+    }
+
+    function updateUI() {
+        document.getElementById('scoreValue').innerText = score;
+        document.getElementById('livesValue').innerText = lives;
+        document.getElementById('levelValue').innerText = level;
+        if (currentUser) document.getElementById('bestScoreDisplay').innerText = currentUserBest;
+    }
+
+    function randomWord() {
+        const pool = getCurrentWordPool();
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function spawnWord() {
+        if (!gameActive) return;
+        const wordText = randomWord();
+        const x = 20 + Math.random() * (width - 80);
+        let speed = 0.35 + Math.random() * 0.65;
+        speed *= currentSpeedMultiplier;
+        let points = 1, isBoss = false;
+        if (bossWords.includes(wordText)) { points = 3; isBoss = true; speed *= 0.5; }
+        else if (advancedWords.includes(wordText)) points = 2;
+        fallingWords.push({ text: wordText, x, y: 20, speed, points, isBoss });
+    }
+
+    function updateLevel() {
+        let newLevel = Math.floor(score / POINTS_PER_LEVEL) + 1;
+        if (newLevel > 20) newLevel = 20;
+        if (newLevel !== level) {
+            level = newLevel;
+            updateUI();
+            const div = document.createElement('div');
+            div.className = 'level-up-animation';
+            div.textContent = `✨ LEVEL ${level} ✨`;
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 1000);
+            currentSpawnDelay = Math.max(40, 70 - (level-1)*1);
+            currentSpeedMultiplier = 0.5 + (level-1)*0.025;
+            if (currentSpeedMultiplier > 1.15) currentSpeedMultiplier = 1.15;
+            spawnDelayFrames = currentSpawnDelay;
+        }
+        pointsInCurrentLevel = score % POINTS_PER_LEVEL;
+        updateProgressBar();
+    }
+
+    function updateWords() {
+        if (!gameActive) return;
+        for (let i=0; i<fallingWords.length; i++) {
+            fallingWords[i].y += fallingWords[i].speed;
+            if (fallingWords[i].y + 25 >= height) {
+                fallingWords.splice(i,1);
+                i--;
+                lives--;
+                updateUI();
+                if (lives <= 0) {
+                    gameActive = false;
+                    if (currentUser) updateUserBestScore(score);
+                    enableStartOverlay(true);
+                    if (animationId) cancelAnimationFrame(animationId);
+                    animationId = null;
+                    draw();
+                    return;
+                }
+            }
+        }
+    }
+
+    function autoShootIfMatches() {
+        if (!gameActive || !currentInput.trim()) return false;
+        const upper = currentInput.trim().toUpperCase();
+        for (let i=0; i<fallingWords.length; i++) {
+            if (fallingWords[i].text === upper) {
+                score += fallingWords[i].points;
+                fallingWords.splice(i,1);
+                updateUI();
+                updateLevel();
                 currentInput = "";
                 wordInput.value = "";
-                wordInput.style.backgroundColor = "#dbeafe";
-                setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 200);
+                wordInput.style.backgroundColor = "#bbf7d0";
+                setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 150);
+                return true;
             }
         }
+        return false;
+    }
 
-        function enableStartOverlay(show) {
-            startOverlay.style.display = show ? 'flex' : 'none';
-            if (!show && currentUser) wordInput.focus();
+    function clearInputWithFeedback() {
+        if (currentInput.length) {
+            currentInput = "";
+            wordInput.value = "";
+            wordInput.style.backgroundColor = "#dbeafe";
+            setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 200);
         }
+    }
 
-        function startGame() {
-            if (!currentUser) { alert("Please login first!"); return; }
-            gameActive = true;
-            score = 0; level = 1; lives = 10; pointsInCurrentLevel = 0;
-            fallingWords = []; framesSinceLastSpawn = 0;
-            currentSpeedMultiplier = 0.5; spawnDelayFrames = 70;
-            currentInput = ""; wordInput.value = "";
-            updateUI(); updateProgressBar();
-            enableStartOverlay(false);
-            if (animationId) cancelAnimationFrame(animationId);
-            animationId = requestAnimationFrame(gameLoop);
-            wordInput.focus();
+    function enableStartOverlay(show) {
+        startOverlay.style.display = show ? 'flex' : 'none';
+        if (!show && currentUser) wordInput.focus();
+    }
+
+    function startGame() {
+        if (!currentUser) { alert("Please login first!"); return; }
+        gameActive = true;
+        score = 0; level = 1; lives = 10; pointsInCurrentLevel = 0;
+        fallingWords = []; framesSinceLastSpawn = 0;
+        currentSpeedMultiplier = 0.5; spawnDelayFrames = 70;
+        currentInput = ""; wordInput.value = "";
+        updateUI(); updateProgressBar();
+        enableStartOverlay(false);
+        if (animationId) cancelAnimationFrame(animationId);
+        animationId = requestAnimationFrame(gameLoop);
+        wordInput.focus();
+    }
+
+    function restartGame() {
+        if (!currentUser) { alert("Please login first!"); return; }
+        if (animationId) cancelAnimationFrame(animationId);
+        startGame();
+    }
+
+    function addLifeViaRewardedAd() {
+        if (!gameActive) { alert("Start a game first!"); return; }
+        if (lives < 12) { lives++; updateUI(); draw(); }
+        else alert("Max lives is 12!");
+    }
+
+    function draw() {
+        ctx.clearRect(0,0,width,height);
+        ctx.fillStyle = "#0f1724"; ctx.fillRect(0,0,width,height);
+        for (let w of fallingWords) {
+            ctx.fillStyle = w.isBoss ? "#ff8888" : (w.points===2 ? "#c084fc" : "#fbbf24");
+            ctx.font = "bold 26px 'Courier New', monospace";
+            ctx.shadowBlur = 4;
+            ctx.fillText(w.text, w.x, w.y);
+            ctx.fillStyle = "#ff6b6b";
+            ctx.font = "18px monospace";
+            ctx.fillText("▼", w.x+5, w.y+12);
         }
-
-        function restartGame() {
-            if (!currentUser) { alert("Please login first!"); return; }
-            if (animationId) cancelAnimationFrame(animationId);
-            startGame();
+        ctx.beginPath();
+        ctx.strokeStyle = "#facc15";
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8,12]);
+        ctx.moveTo(0,height-25);
+        ctx.lineTo(width,height-25);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        if (!gameActive && lives<=0) {
+            ctx.font = "bold 30px 'Courier New', monospace";
+            ctx.fillStyle = "#ff8888";
+            ctx.fillText("💀 GAME OVER 💀", width/2-130, height/2);
+            ctx.font = "16px monospace";
+            ctx.fillStyle = "#cbd5e1";
+            ctx.fillText("Click START GAME", width/2-80, height/2+40);
+        } else if (!gameActive && startOverlay.style.display !== 'flex') {
+            ctx.font = "bold 24px 'Courier New', monospace";
+            ctx.fillStyle = "#facc15";
+            ctx.fillText("⚡ PRESS START ⚡", width/2-110, height/2);
         }
-
-        // ADS
-        function showInterstitialAd(callback) {
-            const adDiv = document.createElement('div');
-            adDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;';
-            adDiv.innerHTML = `<div style="background:#1e293b;padding:2rem;border-radius:32px;text-align:center;"><h2 style="color:#facc15;">📺 ADVERTISEMENT</h2><p style="color:#e2e8f0;">Interstitial ad space</p><button id="closeAd" style="margin-top:20px;background:#facc15;padding:12px 28px;color:#0f1724;font-weight:bold;">CLOSE AD</button></div>`;
-            document.body.appendChild(adDiv);
-            document.getElementById('closeAd').onclick = () => { adDiv.remove(); if(callback) callback(); };
+        
+        if (gameActive && currentInput && !fallingWords.some(w=>w.text===currentInput.toUpperCase())) {
+            ctx.font = "italic 12px monospace";
+            ctx.fillStyle = "#facc15";
+            ctx.fillText("⚠️ Press SPACE to clear", 15, height-10);
         }
+    }
 
-        function addLifeViaRewardedAd() {
-            if (!gameActive) { alert("Start a game first!"); return; }
-            const adDiv = document.createElement('div');
-            adDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:9999;';
-            adDiv.innerHTML = `<div style="background:#2d3e50;padding:2rem;border-radius:28px;text-align:center;"><h2 style="color:#facc15;">🎁 REWARDED AD</h2><p style="color:#e2e8f0;">Watch ad → +1 life</p><button id="claimReward" style="background:#22c55e;padding:12px 20px;color:white;font-weight:bold;">✅ CLAIM</button><button id="cancelAd" style="background:#555;margin-left:10px;padding:12px 20px;color:white;">❌ CANCEL</button></div>`;
-            document.body.appendChild(adDiv);
-            document.getElementById('claimReward').onclick = () => {
-                adDiv.remove();
-                if (lives < 12) { lives++; updateUI(); draw(); }
-                else alert("Max lives is 12!");
-            };
-            document.getElementById('cancelAd').onclick = () => adDiv.remove();
+    function updateSpawner() {
+        if (!gameActive) return;
+        framesSinceLastSpawn++;
+        if (framesSinceLastSpawn >= spawnDelayFrames) {
+            framesSinceLastSpawn = 0;
+            spawnWord();
+            if (level>=12 && Math.random()<0.08) setTimeout(()=>spawnWord(),100);
         }
+    }
 
-        // DRAW
-        function draw() {
-            ctx.clearRect(0,0,width,height);
-            ctx.fillStyle = "#0f1724"; ctx.fillRect(0,0,width,height);
-            for (let w of fallingWords) {
-                ctx.fillStyle = w.isBoss ? "#ff8888" : (w.points===2 ? "#c084fc" : "#fbbf24");
-                ctx.font = "bold 26px 'Courier New', monospace";
-                ctx.shadowBlur = 4;
-                ctx.fillText(w.text, w.x, w.y);
-                ctx.fillStyle = "#ff6b6b";
-                ctx.font = "18px monospace";
-                ctx.fillText("▼", w.x+5, w.y+12);
-            }
-            ctx.beginPath();
-            ctx.strokeStyle = "#facc15";
-            ctx.lineWidth = 3;
-            ctx.setLineDash([8,12]);
-            ctx.moveTo(0,height-25);
-            ctx.lineTo(width,height-25);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            
-            if (!gameActive && lives<=0) {
-                ctx.font = "bold 30px 'Courier New', monospace";
-                ctx.fillStyle = "#ff8888";
-                ctx.shadowBlur = 0;
-                ctx.fillText("💀 GAME OVER 💀", width/2-130, height/2);
-                ctx.font = "16px monospace";
-                ctx.fillStyle = "#cbd5e1";
-                ctx.fillText("Click START GAME", width/2-80, height/2+40);
-            } else if (!gameActive && startOverlay.style.display !== 'flex') {
-                ctx.font = "bold 24px 'Courier New', monospace";
-                ctx.fillStyle = "#facc15";
-                ctx.fillText("⚡ PRESS START ⚡", width/2-110, height/2);
-            }
-            
-            if (gameActive && currentInput && !fallingWords.some(w=>w.text===currentInput.toUpperCase())) {
-                ctx.font = "italic 12px monospace";
-                ctx.fillStyle = "#facc15";
-                ctx.fillText("⚠️ Word not on screen! Press SPACE to clear", 15, height-10);
-            }
-        }
+    function gameLoop() {
+        if (!gameActive && lives<=0) { draw(); animationId=null; return; }
+        updateSpawner(); updateWords(); draw();
+        animationId = requestAnimationFrame(gameLoop);
+    }
 
-        function updateSpawner() {
-            if (!gameActive) return;
-            framesSinceLastSpawn++;
-            if (framesSinceLastSpawn >= spawnDelayFrames) {
-                framesSinceLastSpawn = 0;
-                spawnWord();
-                if (level>=12 && Math.random()<0.08) setTimeout(()=>spawnWord(),100);
-            }
-        }
+    // Event listeners
+    wordInput.addEventListener('input', (e) => { currentInput = e.target.value; autoShootIfMatches(); if(gameActive) wordInput.focus(); });
+    wordInput.addEventListener('keydown', (e) => { if(e.code==='Space' || e.code==='Escape') { e.preventDefault(); clearInputWithFeedback(); } });
+    startBtn.onclick = startGame;
+    restartBtn.onclick = restartGame;
+    rewardBtn.onclick = addLifeViaRewardedAd;
+    document.getElementById('loginBtn').onclick = () => login(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
+    document.getElementById('signupBtn').onclick = () => signup(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
+    document.getElementById('logoutBtn').onclick = logout;
 
-        function gameLoop() {
-            if (!gameActive && lives<=0) { draw(); animationId=null; return; }
-            updateSpawner(); updateWords(); draw();
-            animationId = requestAnimationFrame(gameLoop);
-        }
-
-        // Events
-        wordInput.addEventListener('input', (e) => { currentInput = e.target.value; autoShootIfMatches(); if(gameActive) wordInput.focus(); });
-        wordInput.addEventListener('keydown', (e) => { if(e.code==='Space' || e.code==='Escape') { e.preventDefault(); clearInputWithFeedback(); } });
-        startBtn.onclick = startGame;
-        restartBtn.onclick = restartGame;
-        rewardBtn.onclick = addLifeViaRewardedAd;
-        document.getElementById('loginBtn').onclick = () => login(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
-        document.getElementById('signupBtn').onclick = () => signup(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
-        document.getElementById('logoutBtn').onclick = logout;
-
-        updateLeaderboard();
-        draw();
-    })();
+    updateGlobalLeaderboard();
+    draw();
 </script>
 </body>
 </html>
