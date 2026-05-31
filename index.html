@@ -3,34 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Word Defender | Free Online Typing Game | Global Leaderboard</title>
-    <meta name="description" content="Test your typing speed with Word Defender! Type falling words before they hit the ground. Free online game with global leaderboard. Challenge your friends!">
-    <meta name="keywords" content="typing game, word game, free online game, typing test, word defender, typing speed, browser game, free game, leaderboard, multiplayer typing">
-    <meta name="author" content="Word Defender">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <meta name="language" content="English">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Word Defender - Free Online Typing Game">
-    <meta property="og:description" content="Type falling words before they hit the ground! Compete on the global leaderboard. Free to play, no download required.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://word-defender-game.onrender.com">
-    <meta property="og:site_name" content="Word Defender">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Word Defender - Free Online Typing Game">
-    <meta name="twitter:description" content="Test your typing speed! Type falling words before they hit the ground. Free game with global leaderboard.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://word-defender-game.onrender.com">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    
+    <title>Word Defender | Free Online Typing Game</title>
     <style>
         * {
             user-select: none;
@@ -46,7 +19,26 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
-            padding-left: 180px;
+            padding-left: 200px;
+            padding-right: 200px;
+            color: #e2e8f0;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(168,85,247,0.7); transform: scale(1); }
+            70% { box-shadow: 0 0 0 15px rgba(168,85,247,0); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
         }
 
         .game-layout {
@@ -54,7 +46,7 @@
             gap: 20px;
             justify-content: center;
             align-items: flex-start;
-            max-width: 1400px;
+            max-width: 1300px;
             width: 100%;
             flex-wrap: wrap;
         }
@@ -63,158 +55,69 @@
             flex: 0 0 300px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .logo-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
-            padding: 20px;
+            padding: 12px 20px;
             text-align: center;
-            border: 1px solid #facc15;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .game-logo {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
+            border: 2px solid #facc15;
+            animation: float 3s ease-in-out infinite;
         }
 
         .game-logo .word {
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            display: block;
-        }
-
-        .game-logo .defender {
-            font-size: 1.4rem;
-            letter-spacing: 6px;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .game-logo .word span {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
             background: linear-gradient(135deg, #facc15, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px rgba(168,85,247,0.3);
-        }
-
-        .game-logo .defender span {
-            background: linear-gradient(135deg, #a855f7, #facc15);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-weight: bold;
         }
 
         .logo-subtitle {
             font-size: 0.7rem;
-            color: #94a3b8;
-            margin-top: 10px;
+            color: #facc15;
+            margin-top: 5px;
             letter-spacing: 2px;
-            border-top: 1px solid #334155;
-            padding-top: 10px;
         }
 
         .ad-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
-            border: 2px solid #facc15;
+            border: 2px dashed #facc15;
         }
 
         .ad-panel h3 {
             color: #facc15;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1rem;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
-        .ad-placeholder {
-            background: #0f1724;
-            border-radius: 20px;
-            padding: 10px;
-            color: #cbd5e1;
-            border: 1px solid #334155;
+        .left-ad-container {
+            min-height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 270px;
         }
 
         .auth-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
-            padding: 20px;
+            padding: 15px;
             color: #e2e8f0;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 1px solid #334155;
         }
 
         .auth-panel h2 {
-            font-size: 1.3rem;
-            margin-top: 0;
-            margin-bottom: 15px;
             color: #facc15;
             text-align: center;
-            border-bottom: 2px solid #facc15;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .auth-input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 30px;
-            border: none;
-            background: #f1f5f9;
-            font-family: monospace;
-            font-size: 0.9rem;
-            text-align: center;
-            outline: none;
-            color: #0f1724;
-            font-weight: bold;
-            box-sizing: border-box;
-        }
-
-        .auth-btn {
-            background: #3b82f6;
-            width: calc(100% - 20px);
-            margin: 5px 0;
-            padding: 10px;
-            font-size: 0.9rem;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-
-        .auth-btn.green {
-            background: #22c55e;
-        }
-
-        .user-info {
-            text-align: center;
-            margin-top: 10px;
-            padding: 8px;
-            background: #0f1724;
-            border-radius: 20px;
-        }
-
-        .logout-btn {
-            background: #ef4444;
-            padding: 5px 12px;
-            font-size: 0.8rem;
-            margin-top: 8px;
-            border: none;
-            border-radius: 40px;
-            color: white;
-            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
         .game-container {
@@ -222,6 +125,7 @@
             border-radius: 32px;
             padding: 20px;
             box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+            position: relative;
         }
 
         canvas {
@@ -229,52 +133,53 @@
             margin: 0 auto;
             border-radius: 16px;
             background: #0f1724;
+            cursor: pointer;
         }
 
         .info-panel {
             display: flex;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 6px 12px;
             background: #0f1724;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-radius: 60px;
-            gap: 15px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
-        .score, .lives, .level, .best {
+        .score, .lives, .level, .best, .combo, .streak {
             background: #00000066;
-            padding: 5px 15px;
+            padding: 3px 10px;
             border-radius: 40px;
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: #e2e8f0;
             font-weight: bold;
         }
 
-        .score span, .lives span, .level span, .best span {
+        .score span, .lives span, .level span, .best span, .combo span, .streak span {
             color: #facc15;
-            font-size: 1.3rem;
-            margin-left: 5px;
+            font-size: 1rem;
+            margin-left: 4px;
         }
 
         .progress-container {
-            margin: 15px 0;
+            margin: 10px 0;
             background: #0f1724;
             border-radius: 30px;
-            padding: 8px 15px;
+            padding: 5px 10px;
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
+            margin-bottom: 4px;
+            font-size: 0.65rem;
             color: #cbd5e1;
         }
 
         .progress-bar-bg {
             background: #334155;
-            height: 16px;
+            height: 10px;
             border-radius: 30px;
             overflow: hidden;
         }
@@ -285,21 +190,23 @@
             height: 100%;
             border-radius: 30px;
             transition: width 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .input-area {
             display: flex;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 12px;
             background: #0f1724;
-            padding: 12px;
+            padding: 8px;
             border-radius: 60px;
         }
 
         #wordInput {
             flex: 1;
-            padding: 12px;
-            font-size: 1.2rem;
+            padding: 10px 12px;
+            font-size: 1rem;
             font-family: monospace;
             font-weight: bold;
             background: #f1f5f9;
@@ -308,7 +215,18 @@
             outline: none;
             text-transform: uppercase;
             text-align: center;
+            transition: all 0.3s;
             color: #0f1724;
+        }
+
+        #wordInput.correct-flash {
+            background: #bbf7d0;
+            transform: scale(1.02);
+        }
+
+        #wordInput.wrong-flash {
+            background: #fee2e2;
+            animation: shake 0.3s ease-in-out;
         }
 
         button {
@@ -316,89 +234,81 @@
             border: none;
             color: white;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 40px;
             font-family: monospace;
             cursor: pointer;
-            transition: 0.1s;
+            transition: all 0.2s;
+            font-size: 0.8rem;
         }
 
-        button:active { transform: scale(0.96); }
-        button:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        .reward-btn { 
-            background: #eab308; 
-            color: #0f1724; 
-            font-weight: bold;
-            transition: all 0.2s ease;
+        button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
         }
 
-        .restart-btn { background: #ef4444; }
-        .start-btn { background: #22c55e; font-size: 1.2rem; padding: 12px 25px; animation: pulse 1.5s infinite; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(34,197,94,0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+        .powerup-btn {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            animation: pulse-glow 2s infinite;
+            color: white;
+            padding: 6px 10px;
+            font-size: 0.7rem;
         }
 
-        .controls { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
-
-        .right-panel {
-            flex: 1;
-            min-width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .leaderboard-panel {
-            background: linear-gradient(135deg, #1e293b, #0f1724);
-            border-radius: 28px;
-            padding: 20px;
-            border: 1px solid #facc15;
-        }
-
-        .leaderboard-panel h2 {
-            color: #facc15;
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .leaderboard-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .leaderboard-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 20px;
-            margin: 8px 0;
-            background: #0f1724;
+        .auth-input {
+            width: calc(100% - 20px);
+            padding: 6px;
+            margin: 5px 0;
             border-radius: 30px;
+            border: none;
+            background: #f1f5f9;
+            font-family: monospace;
+            font-size: 0.8rem;
+            text-align: center;
+            outline: none;
+            color: #0f1724;
             font-weight: bold;
-            color: #e2e8f0;
-            font-size: 1.1rem;
+            box-sizing: border-box;
         }
 
-        .leaderboard-list li:nth-child(1) { 
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: float-up 1s ease-out forwards;
+        }
+
+        @keyframes float-up {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1e293b, #0f1724);
             border-left: 4px solid #facc15;
-            background: linear-gradient(90deg, #1a2a3a, #0f1724);
+            padding: 8px 14px;
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-weight: bold;
+            z-index: 10000;
+            animation: slideIn 0.3s ease-out;
+            font-size: 0.8rem;
         }
-        .leaderboard-list li:nth-child(2) { border-left: 4px solid #94a3b8; }
-        .leaderboard-list li:nth-child(3) { border-left: 4px solid #cd7f32; }
 
-        .rank { color: #facc15; font-weight: bold; }
-        .score-display { color: #facc15; font-weight: bold; }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
 
+        /* EXPANDABLE HOW TO PLAY - UNDER GAME */
         .expandable-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
-            padding: 20px;
+            padding: 15px;
+            margin-top: 20px;
             color: #e2e8f0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             border: 1px solid #334155;
@@ -413,13 +323,13 @@
         }
 
         .expandable-header h2 {
-            font-size: 1.3rem;
+            font-size: 1rem;
             margin: 0;
             color: #facc15;
         }
 
         .expandable-icon {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #facc15;
             transition: transform 0.3s ease;
         }
@@ -443,8 +353,8 @@
         }
 
         .instruction-step {
-            margin: 15px 0;
-            padding: 8px;
+            margin: 10px 0;
+            padding: 6px;
             background: #0f1724;
             border-radius: 12px;
             border-left: 3px solid #facc15;
@@ -456,25 +366,67 @@
             padding: 2px 8px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #facc15;
             margin-right: 8px;
         }
 
         .instruction-step p {
-            margin: 5px 0 0 0;
-            font-size: 0.85rem;
+            margin: 4px 0 0 0;
+            font-size: 0.75rem;
             color: #cbd5e1;
         }
 
         .tip-box {
             background: #2d3748;
             border-radius: 12px;
-            padding: 10px;
-            margin-top: 15px;
+            padding: 8px;
+            margin-top: 10px;
             text-align: center;
+            font-size: 0.7rem;
+        }
+
+        /* LEADERBOARD PANEL - UNDER HOW TO PLAY */
+        .leaderboard-panel {
+            background: linear-gradient(135deg, #1e293b, #0f1724);
+            border-radius: 28px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #facc15;
+        }
+
+        .leaderboard-panel h2 {
+            color: #facc15;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .leaderboard-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .leaderboard-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #0f1724;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #e2e8f0;
             font-size: 0.8rem;
         }
+
+        .leaderboard-list li:nth-child(1) { border-left: 4px solid #facc15; }
+        .leaderboard-list li:nth-child(2) { border-left: 4px solid #94a3b8; }
+        .leaderboard-list li:nth-child(3) { border-left: 4px solid #cd7f32; }
+
+        .rank { color: #facc15; font-weight: bold; }
+        .score-display { color: #facc15; font-weight: bold; }
 
         .start-overlay {
             position: absolute;
@@ -487,34 +439,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 16px;
-            backdrop-filter: blur(5px);
             z-index: 10;
-        }
-
-        .game-area { position: relative; }
-
-        .level-up-animation {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #a855f7, #7c3aed);
-            color: white;
-            font-size: 2.5rem;
-            font-weight: bold;
-            padding: 15px 35px;
-            border-radius: 60px;
-            z-index: 10000;
-            animation: levelUpPop 1s ease-out forwards;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        @keyframes levelUpPop {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-            40% { transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -80%) scale(0.8); visibility: hidden; }
         }
 
         .popup-overlay {
@@ -528,102 +453,70 @@
             justify-content: center;
             align-items: center;
             z-index: 20000;
-            backdrop-filter: blur(8px);
         }
 
         .popup-content {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 32px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             border: 3px solid #facc15;
-            max-width: 700px;
+            max-width: 450px;
             width: 90%;
-            box-shadow: 0 0 50px rgba(168,85,247,0.5);
-            animation: popupBounce 0.5s ease-out;
-        }
-
-        @keyframes popupBounce {
-            0% { transform: scale(0.8); opacity: 0; }
-            80% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
         }
 
         .popup-content h3 {
             color: #facc15;
             margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .popup-ad-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0f1724;
-            border-radius: 20px;
-            padding: 20px;
-            min-height: 400px;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
         }
 
         .popup-close-btn {
             background: linear-gradient(135deg, #facc15, #a855f7);
             color: #0f1724;
             border: none;
-            padding: 12px 30px;
+            padding: 8px 20px;
             border-radius: 50px;
-            margin-top: 20px;
+            margin-top: 12px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
         }
 
-        .popup-close-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .popup-timer {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
             body {
                 padding-left: 20px;
+                padding-right: 20px;
             }
-            .game-layout { flex-direction: column; align-items: center; }
-            .left-panel, .right-panel { width: 100%; max-width: 500px; }
-            .sticky-side-ad {
+            .left-sticky-ad, .right-sticky-ad {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- STICKY SIDEBAR AD - FIXED SIZE (LARGER) -->
+    <!-- LEFT STICKY AD - LARGER SIZE (160px) - NO X BUTTON -->
     <!-- BEGIN AADS AD UNIT 2440147 -->
-    <div style="position: fixed; left: 10px; top: 50%; transform: translateY(-50%); z-index: 99999; width: 160px;">
-        <input autocomplete="off" type="checkbox" id="aadsstickymptqm323" hidden />
+    <div class="left-sticky-ad" style="position: fixed; left: 0; top: 50%; transform: translateY(-50%); z-index: 99999;">
         <div style="padding-top: 0; padding-bottom: 0;">
-            <div style="width:160px;height:auto;text-align:center;font-size:0;">
-                <label for="aadsstickymptqm323" style="bottom: -30px; margin: 0 auto; right: 0; left: 0; max-width: 24px; position: absolute; border-radius: 4px; background: rgba(248, 248, 249, 0.70); padding: 4px; z-index: 99999; cursor: pointer">
-                    <svg fill="#000000" height="16px" width="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
-                        <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "/>
-                    </svg>
-                </label>
-                <div id="frame" style="width: 100%; margin: auto; position: relative; z-index: 99998; height: auto; display: flex; flex-direction: column; justify-content: center">
-                    <iframe data-aa='2440147' src='//acceptable.a-ads.com/2440147/?size=160x600'
-                        style='border:0; padding:0; width:160px; height:600px; overflow:hidden; margin: 0 auto; background: #0f1724; border-radius: 16px;'></iframe>
+            <div style="width:160px;height:auto;text-align:center;font-size:0;min-width:160px">
+                <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;height:auto; display: flex;flex-direction: column; justify-content: center">
+                    <iframe data-aa=2440147 src=//acceptable.a-ads.com/2440147/?size=160x600 style='border:0; padding:0; width:160px; height:600px; overflow:hidden; margin: 0 auto; background: #0f1724; border-radius: 12px;'></iframe>
                 </div>
             </div>
-            <style>
-                #aadsstickymptqm323:checked + div {
-                    display: none;
-                }
-            </style>
+        </div>
+    </div>
+    <!-- END AADS AD UNIT 2440147 -->
+
+    <!-- RIGHT STICKY AD - LARGER SIZE (160px) - NO X BUTTON -->
+    <!-- BEGIN AADS AD UNIT 2440147 -->
+    <div class="right-sticky-ad" style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 99999;">
+        <div style="padding-top: 0; padding-bottom: 0;">
+            <div style="width:160px;height:auto;text-align:center;font-size:0;min-width:160px">
+                <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;height:auto; display: flex;flex-direction: column; justify-content: center">
+                    <iframe data-aa=2440147 src=//acceptable.a-ads.com/2440147/?size=160x600 style='border:0; padding:0; width:160px; height:600px; overflow:hidden; margin: 0 auto; background: #0f1724; border-radius: 12px;'></iframe>
+                </div>
+            </div>
         </div>
     </div>
     <!-- END AADS AD UNIT 2440147 -->
@@ -632,30 +525,19 @@
     <div class="left-panel">
         <div class="logo-panel">
             <div class="game-logo">
-                <div class="word">
-                    <span>◢ WORD</span>
-                </div>
-                <div class="defender">
-                    <span>DEFENDER ◣</span>
-                </div>
+                <div class="word">⚡ WORD DEFENDER ⚡</div>
             </div>
-            <div class="logo-subtitle">
-                ⚡ TYPE • DESTROY • DOMINATE ⚡
-            </div>
+            <div class="logo-subtitle">TYPE • DESTROY • DOMINATE</div>
         </div>
 
-        <!-- LEFT BANNER AD - FIXED SIZE 300x250 -->
         <div class="ad-panel">
-            <h3>📺 SPONSORED CONTENT</h3>
-            <div class="ad-placeholder">
-                <!-- BEGIN AADS AD UNIT 2440147 -->
-                <div id="frame-banner" style="width: 100%; margin: auto; position: relative;">
+            <h3>📺 SPONSORED</h3>
+            <div class="left-ad-container">
+                <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
                     <iframe data-aa='2440147' src='//acceptable.a-ads.com/2440147/?size=300x250'
-                        style='border:0; padding:0; width:300px; height:250px; overflow:hidden; display: block; margin: auto; background: #0f1724; border-radius: 12px;'></iframe>
+                        style='border:0; padding:0; width:300px; height:250px; overflow:hidden;display: block;margin: auto; background: #0f1724; border-radius: 12px;'></iframe>
                 </div>
-                <!-- END AADS AD UNIT 2440147 -->
             </div>
-            <p style="font-size:0.7rem; margin-top:10px;">Ads keep this game free ❤️</p>
         </div>
 
         <div class="auth-panel" id="authPanel">
@@ -663,15 +545,13 @@
             <div id="authForm">
                 <input type="text" id="loginUsername" placeholder="Username" class="auth-input">
                 <input type="password" id="loginPassword" placeholder="Password" class="auth-input">
-                <button id="loginBtn" class="auth-btn">🔓 LOGIN</button>
-                <button id="signupBtn" class="auth-btn green">📝 SIGN UP</button>
+                <button id="loginBtn" style="width:100%;margin:4px 0;">🔓 LOGIN</button>
+                <button id="signupBtn" style="width:100%;margin:4px 0;background:#22c55e;">📝 SIGN UP</button>
             </div>
-            <div id="userInfo" style="display: none;">
-                <div class="user-info">
-                    👤 <strong id="currentUser">Player</strong><br>
-                    🏆 Best: <span id="userBestScore">0</span>
-                    <button id="logoutBtn" class="logout-btn">🚪 LOGOUT</button>
-                </div>
+            <div id="userInfo" style="display:none;text-align:center;">
+                👤 <strong id="currentUser" style="color:#facc15;">Player</strong><br>
+                🏆 Best: <span id="userBestScore" style="color:#facc15;">0</span>
+                <button id="logoutBtn" style="background:#ef4444;margin-top:6px;padding:4px 12px;">🚪 LOGOUT</button>
             </div>
         </div>
     </div>
@@ -682,41 +562,43 @@
             <div class="best">🏆 BEST <span id="bestScoreDisplay">0</span></div>
             <div class="level">⭐ LEVEL <span id="levelValue">1</span></div>
             <div class="lives">❤️ LIVES <span id="livesValue">10</span></div>
+            <div class="combo">🎯 COMBO <span id="comboCount">0</span></div>
+            <div class="streak">💀 STREAK <span id="streakCount">0</span></div>
+        </div>
+
+        <div style="display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap;">
+            <button id="slowTimeBtn" class="powerup-btn">⏱️ SLOW</button>
+            <button id="freezeBtn" class="powerup-btn">❄️ FREEZE</button>
+            <button id="nukeBtn" class="powerup-btn">💣 NUKE</button>
+            <button id="shieldBtn" class="powerup-btn">🛡️ SHIELD</button>
         </div>
 
         <div class="progress-container">
-            <div class="progress-label"><span>📊 Level Progress</span><span id="progressText">0 / 20</span></div>
+            <div class="progress-label"><span>📊 LEVEL PROGRESS</span><span id="progressText">0 / 20</span></div>
             <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
         </div>
 
-        <div class="game-area">
+        <div class="game-area" style="position: relative;">
             <canvas id="gameCanvas" width="700" height="450"></canvas>
             <div id="startOverlay" class="start-overlay">
-                <div style="text-align:center; background:#1e293b; padding:30px; border-radius:32px;">
-                    <h1 style="color:#facc15;">⚡ WORD DEFENDER ⚡</h1>
-                    <p style="color:#e2e8f0;">Type falling words before they hit!</p>
-                    <button id="startGameBtn" class="start-btn">🎮 START GAME</button>
+                <div style="text-align:center;background:#1e293b;padding:20px;border-radius:32px;">
+                    <h1 style="color:#facc15;font-size:1.5rem;">⚡ WORD DEFENDER ⚡</h1>
+                    <p style="color:#e2e8f0;font-size:0.8rem;">Type falling words before they hit!</p>
+                    <button id="startGameBtn" style="background:#22c55e;font-size:0.9rem;padding:8px 16px;">🎮 START GAME</button>
                 </div>
             </div>
         </div>
 
         <div class="input-area">
-            <input type="text" id="wordInput" placeholder="LOGIN TO PLAY..." autocomplete="off" disabled>
+            <input type="text" id="wordInput" placeholder="TYPE WORD..." autocomplete="off" disabled>
             <button id="rewardLifeBtn" class="reward-btn" disabled>📺 +1 LIFE</button>
         </div>
-        <div class="controls">
-            <button id="restartBtn" class="restart-btn">🔄 RESTART</button>
-        </div>
-    </div>
-
-    <div class="right-panel">
-        <div class="leaderboard-panel">
-            <h2>🏆 GLOBAL LEADERBOARD 🏆</h2>
-            <ul class="leaderboard-list" id="leaderboardList">
-                <li>🌐 Loading global scores...</li>
-            </ul>
+        <div class="controls" style="display:flex; gap:8px; margin-top:8px; justify-content:center;">
+            <button id="restartBtn" style="padding:6px 14px;">🔄 RESTART</button>
+            <button id="soundBtn" style="padding:6px 14px;">🔊 SOUND ON</button>
         </div>
 
+        <!-- EXPANDABLE HOW TO PLAY - UNDER GAME DIV -->
         <div class="expandable-panel">
             <div class="expandable-header" id="howToPlayHeader">
                 <h2>🎮 HOW TO PLAY</h2>
@@ -728,149 +610,65 @@
                 <div class="instruction-step"><span class="key">3</span><p>LOOK at falling words</p></div>
                 <div class="instruction-step"><span class="key">4</span><p>TYPE the word exactly → auto destroy!</p></div>
                 <div class="instruction-step"><span class="key">␣ SPACE</span><p>Clear mistyped word</p></div>
-                <div class="tip-box">💡 Each level = 20 points!<br>BOSS words = +3 points!<br>🏆 GLOBAL leaderboard!</div>
+                <div class="tip-box">💡 Each level = 20 points!<br>BOSS words = +3 points!<br>Golden words = +2 points!<br>Combo = more points!<br>Power-ups drop randomly!</div>
             </div>
         </div>
+
+        <!-- LEADERBOARD UNDER HOW TO PLAY -->
+        <div class="leaderboard-panel">
+            <h2>🏆 GLOBAL LEADERBOARD</h2>
+            <ul class="leaderboard-list" id="leaderboardList">
+                <li>🌐 Loading global scores...</li>
+            </ul>
+        </div>
+
+        <p style="font-size:0.65rem; text-align:center; color:#94a3b8; margin-top:15px;">Ads keep this game free ❤️</p>
     </div>
 </div>
 
-<!-- POPUP OVERLAY FOR REWARDED ADS & GAME OVER -->
+<!-- POPUP FOR +1 LIFE AD -->
 <div id="adPopup" class="popup-overlay">
     <div class="popup-content">
-        <h3 id="popupTitle">🎁 REWARDED AD</h3>
-        <div id="popupAdContainer" class="popup-ad-container"></div>
+        <h3>📺 WATCH AD FOR +1 LIFE</h3>
+        <div id="popupAdContainer"></div>
         <button id="popupCloseBtn" class="popup-close-btn">✅ CLAIM REWARD</button>
-        <div id="popupTimer" class="popup-timer">Watch ad for 5 seconds...</div>
+        <div id="popupTimer" style="font-size:0.65rem; margin-top:6px; color:#94a3b8;">Watch ad for 5 seconds...</div>
     </div>
 </div>
 
 <script>
+    // ========== GAME CODE ==========
     const API_URL = 'https://word-defender-api.onrender.com/api';
     let currentUser = null;
     let currentUserBest = 0;
 
-    function createPopupAd() {
-        const container = document.getElementById('popupAdContainer');
-        container.innerHTML = '';
-        const adDiv = document.createElement('div');
-        adDiv.id = 'popup-frame';
-        adDiv.style.cssText = 'width: 100%;margin: auto;position: relative; z-index: 99998;';
-        adDiv.innerHTML = `
-            <!-- BEGIN AADS AD UNIT 2440147 -->
-            <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
-                <iframe data-aa='2440147' src='//acceptable.a-ads.com/2440147/?size=300x250'
-                    style='border:0; padding:0; width:100%; height:auto; min-height:250px; overflow:hidden;display: block;margin: auto; background: #0f1724; border-radius: 12px;'></iframe>
-            </div>
-            <!-- END AADS AD UNIT 2440147 -->
-        `;
-        container.appendChild(adDiv);
-    }
+    // Game variables
+    let score = 0, level = 1, lives = 10, gameActive = false, animationId = null;
+    let combo = 0, streak = 0, bestCombo = 0, totalKills = 0;
+    let powerups = { slowTime: 0, freeze: 0, nuke: 0, shield: 0 };
+    let slowTimeActive = false, freezeActive = false, shieldActive = false;
+    let soundEnabled = true;
 
-    function showRewardedPopup(onReward) {
-        createPopupAd();
-        const popup = document.getElementById('adPopup');
-        const title = document.getElementById('popupTitle');
-        const closeBtn = document.getElementById('popupCloseBtn');
-        const timerDiv = document.getElementById('popupTimer');
-        
-        title.innerHTML = '🎁 REWARDED AD 🎁<br>Watch to get +1 LIFE!';
-        closeBtn.innerHTML = '✅ CLAIM REWARD';
-        timerDiv.style.display = 'block';
-        
-        let secondsLeft = 5;
-        timerDiv.innerHTML = `Watch ad for ${secondsLeft} more seconds...`;
-        
-        if (window.popupTimer) clearInterval(window.popupTimer);
-        if (window.popupTimeoutId) clearTimeout(window.popupTimeoutId);
-        
-        window.popupTimer = setInterval(() => {
-            secondsLeft--;
-            timerDiv.innerHTML = `Watch ad for ${secondsLeft} more seconds...`;
-            if (secondsLeft <= 0) {
-                clearInterval(window.popupTimer);
-                timerDiv.innerHTML = '✅ Reward ready! Click CLAIM!';
-            }
-        }, 1000);
-        
-        let rewardClaimed = false;
-        const claimHandler = () => {
-            if (!rewardClaimed && secondsLeft <= 0) {
-                rewardClaimed = true;
-                closePopup();
-                if (onReward) onReward(true);
-            } else if (secondsLeft > 0) {
-                timerDiv.innerHTML = `Wait ${secondsLeft} more seconds to claim!`;
-            }
-        };
-        
-        closeBtn.onclick = claimHandler;
-        
-        window.popupTimeoutId = setTimeout(() => {
-            if (!rewardClaimed) {
-                closePopup();
-                if (onReward) onReward(false);
-            }
-        }, 8000);
-        
-        popup.style.display = 'flex';
-    }
+    const POINTS_PER_LEVEL = 20;
+    let pointsInCurrentLevel = 0;
 
-    function showGameOverPopup(onRestart) {
-        createPopupAd();
-        const popup = document.getElementById('adPopup');
-        const title = document.getElementById('popupTitle');
-        const closeBtn = document.getElementById('popupCloseBtn');
-        const timerDiv = document.getElementById('popupTimer');
-        
-        title.innerHTML = '💀 GAME OVER 💀<br>Watch ad to continue playing!';
-        closeBtn.innerHTML = '🔄 RESTART GAME ➡';
-        timerDiv.style.display = 'block';
-        
-        let secondsLeft = 5;
-        timerDiv.innerHTML = `Ad closes in ${secondsLeft} seconds...`;
-        
-        if (window.popupTimer) clearInterval(window.popupTimer);
-        if (window.popupTimeoutId) clearTimeout(window.popupTimeoutId);
-        
-        window.popupTimer = setInterval(() => {
-            secondsLeft--;
-            timerDiv.innerHTML = `Ad closes in ${secondsLeft} seconds...`;
-            if (secondsLeft <= 0) {
-                clearInterval(window.popupTimer);
-                timerDiv.innerHTML = 'You may now restart...';
-            }
-        }, 1000);
-        
-        let restartTriggered = false;
-        const restartHandler = () => {
-            if (!restartTriggered && secondsLeft <= 0) {
-                restartTriggered = true;
-                closePopup();
-                if (onRestart) onRestart();
-            } else if (secondsLeft > 0) {
-                timerDiv.innerHTML = `Wait ${secondsLeft} more seconds to restart!`;
-            }
-        };
-        
-        closeBtn.onclick = restartHandler;
-        
-        window.popupTimeoutId = setTimeout(() => {
-            if (!restartTriggered) {
-                closePopup();
-                if (onRestart) onRestart();
-            }
-        }, 8000);
-        
-        popup.style.display = 'flex';
-    }
+    // Word pools
+    const baseWords = ["CAT","DOG","SUN","CAR","BALL","TREE","FISH","BIRD","STAR","MOON","HAT","CUP","BAG","ANT","BEE","EGG","EYE","ARM","LEG","TOY","RED","BLUE","BIG","HOT","COLD","WET","DRY","FUN","RUN","JUMP"];
+    const goldenWords = ["GOLDEN","JACKPOT","BONUS","LEGEND","MYSTIC"];
+    const bossWords = ["!!!BOSS!!!","DRAGON","PHOENIX"];
 
-    function closePopup() {
-        const popup = document.getElementById('adPopup');
-        popup.style.display = 'none';
-        if (window.popupTimer) clearInterval(window.popupTimer);
-        if (window.popupTimeoutId) clearTimeout(window.popupTimeoutId);
-    }
+    let fallingWords = [];
+    let framesSinceLastSpawn = 0;
+    let spawnDelay = 70;
+    let currentSpeed = 0.5;
+    let currentInput = "";
 
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 700;
+    canvas.height = 450;
+
+    // Expandable How to Play
     const header = document.getElementById('howToPlayHeader');
     const content = document.getElementById('howToPlayContent');
     const icon = document.getElementById('howToPlayIcon');
@@ -886,18 +684,324 @@
         }
     });
 
-    async function apiCall(endpoint, method = 'GET', data = null) {
-        const options = { method, headers: { 'Content-Type': 'application/json' } };
-        if (data) options.body = JSON.stringify(data);
-        const response = await fetch(`${API_URL}${endpoint}`, options);
-        const result = await response.json();
-        if (!response.ok) throw new Error(result.error || 'API error');
-        return result;
+    // Popup ad function
+    let popupTimer = null;
+    let popupTimeoutId = null;
+
+    function createPopupAd() {
+        const container = document.getElementById('popupAdContainer');
+        container.innerHTML = '';
+        const adDiv = document.createElement('div');
+        adDiv.id = 'popup-frame';
+        adDiv.style.cssText = 'width: 100%;margin: auto;position: relative;';
+        adDiv.innerHTML = `
+            <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
+                <iframe data-aa='2440147' src='//acceptable.a-ads.com/2440147/?size=300x250'
+                    style='border:0; padding:0; width:100%; height:auto; min-height:250px; overflow:hidden;display: block;margin: auto; background: #0f1724; border-radius: 12px;'></iframe>
+            </div>
+        `;
+        container.appendChild(adDiv);
+    }
+
+    function showRewardedPopup(onReward) {
+        createPopupAd();
+        const popup = document.getElementById('adPopup');
+        const closeBtn = document.getElementById('popupCloseBtn');
+        const timerDiv = document.getElementById('popupTimer');
+        
+        let secondsLeft = 5;
+        timerDiv.innerHTML = `Watch ad for ${secondsLeft} more seconds...`;
+        
+        if (popupTimer) clearInterval(popupTimer);
+        if (popupTimeoutId) clearTimeout(popupTimeoutId);
+        
+        popupTimer = setInterval(() => {
+            secondsLeft--;
+            timerDiv.innerHTML = `Watch ad for ${secondsLeft} more seconds...`;
+            if (secondsLeft <= 0) {
+                clearInterval(popupTimer);
+                timerDiv.innerHTML = '✅ Reward ready! Click CLAIM!';
+            }
+        }, 1000);
+        
+        let rewardClaimed = false;
+        
+        const claimHandler = () => {
+            if (!rewardClaimed && secondsLeft <= 0) {
+                rewardClaimed = true;
+                closePopup();
+                if (onReward) onReward(true);
+            } else if (secondsLeft > 0) {
+                timerDiv.innerHTML = `Wait ${secondsLeft} more seconds to claim!`;
+            }
+        };
+        
+        closeBtn.onclick = claimHandler;
+        
+        popupTimeoutId = setTimeout(() => {
+            if (!rewardClaimed) {
+                closePopup();
+                if (onReward) onReward(false);
+            }
+        }, 8000);
+        
+        popup.style.display = 'flex';
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('adPopup');
+        popup.style.display = 'none';
+        if (popupTimer) clearInterval(popupTimer);
+        if (popupTimeoutId) clearTimeout(popupTimeoutId);
+    }
+
+    function showNotification(msg) {
+        const notif = document.createElement('div');
+        notif.className = 'notification';
+        notif.innerHTML = msg;
+        document.body.appendChild(notif);
+        setTimeout(() => notif.remove(), 2000);
+    }
+
+    function createExplosion(x, y) {
+        for (let i = 0; i < 12; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'floating-particle';
+            particle.innerHTML = ['💥','✨','⚡','🔥','💢'][Math.floor(Math.random()*5)];
+            particle.style.left = (x + (Math.random() - 0.5) * 40) + 'px';
+            particle.style.top = (y + (Math.random() - 0.5) * 40) + 'px';
+            particle.style.position = 'fixed';
+            particle.style.fontSize = (16 + Math.random() * 14) + 'px';
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 700);
+        }
+    }
+
+    function updateUI() {
+        document.getElementById('scoreValue').innerText = score;
+        document.getElementById('livesValue').innerText = lives;
+        document.getElementById('levelValue').innerText = level;
+        document.getElementById('comboCount').innerText = combo;
+        document.getElementById('streakCount').innerText = streak;
+        if (currentUser) document.getElementById('bestScoreDisplay').innerText = currentUserBest;
+    }
+
+    function updateProgress() {
+        const pct = (pointsInCurrentLevel / POINTS_PER_LEVEL) * 100;
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressText').innerHTML = `${pointsInCurrentLevel} / ${POINTS_PER_LEVEL}`;
+    }
+
+    function randomWord() {
+        let pool = [...baseWords];
+        if (level >= 3) pool.push(...goldenWords);
+        if (level >= 7) pool.push(...bossWords);
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function spawnWord() {
+        if (!gameActive) return;
+        if (freezeActive) return;
+        
+        const wordText = randomWord();
+        const isGolden = goldenWords.includes(wordText);
+        const isBoss = bossWords.includes(wordText);
+        const points = isBoss ? 5 : (isGolden ? 3 : 1);
+        
+        let speed = (0.3 + Math.random() * 0.7) * currentSpeed;
+        if (slowTimeActive) speed *= 0.5;
+        
+        fallingWords.push({
+            text: wordText,
+            x: 20 + Math.random() * (canvas.width - 80),
+            y: 20,
+            speed: speed,
+            points: points,
+            isGolden: isGolden,
+            isBoss: isBoss
+        });
+    }
+
+    function updateGame() {
+        if (!gameActive) return;
+        
+        for (let i = 0; i < fallingWords.length; i++) {
+            fallingWords[i].y += fallingWords[i].speed;
+            
+            if (fallingWords[i].y + 30 >= canvas.height) {
+                fallingWords.splice(i,1);
+                i--;
+                
+                if (!shieldActive) {
+                    lives--;
+                    combo = 0;
+                    streak = 0;
+                    updateUI();
+                    showNotification('💔 LOST A LIFE!');
+                    
+                    if (lives <= 0) {
+                        gameActive = false;
+                        if (animationId) cancelAnimationFrame(animationId);
+                        showNotification('💀 GAME OVER! 💀');
+                        document.getElementById('startOverlay').style.display = 'flex';
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    function shootWord(event) {
+        if (!gameActive || !currentInput.trim()) return;
+        
+        const typed = currentInput.trim().toUpperCase();
+        const wordIndex = fallingWords.findIndex(w => w.text === typed);
+        
+        if (wordIndex !== -1) {
+            const word = fallingWords[wordIndex];
+            let pointsEarned = word.points;
+            
+            combo++;
+            streak++;
+            pointsEarned *= (1 + Math.floor(combo / 5));
+            
+            if (Math.random() < 0.2) {
+                pointsEarned *= 2;
+                showNotification('⚡ CRITICAL HIT! 2x POINTS! ⚡');
+            }
+            
+            score += pointsEarned;
+            totalKills++;
+            pointsInCurrentLevel = score % POINTS_PER_LEVEL;
+            
+            const rect = canvas.getBoundingClientRect();
+            createExplosion(rect.left + word.x, rect.top + word.y);
+            
+            let newLevel = Math.floor(score / POINTS_PER_LEVEL) + 1;
+            if (newLevel > level) {
+                level = newLevel;
+                currentSpeed = 0.5 + (level - 1) * 0.03;
+                if (currentSpeed > 1.2) currentSpeed = 1.2;
+                spawnDelay = Math.max(35, 70 - (level - 1));
+                showNotification(`🎉 LEVEL ${level}! 🎉`);
+            }
+            
+            fallingWords.splice(wordIndex, 1);
+            updateUI();
+            updateProgress();
+            
+            document.getElementById('wordInput').classList.add('correct-flash');
+            setTimeout(() => document.getElementById('wordInput').classList.remove('correct-flash'), 200);
+            
+            if (Math.random() < 0.08) {
+                const types = ['slowTime', 'freeze', 'nuke', 'shield'];
+                const type = types[Math.floor(Math.random() * types.length)];
+                powerups[type]++;
+                showNotification(`🎁 POWER-UP: ${type.toUpperCase()} acquired! 🎁`);
+            }
+            
+            currentInput = "";
+            document.getElementById('wordInput').value = "";
+        } else if (currentInput.length > 0) {
+            document.getElementById('wordInput').classList.add('wrong-flash');
+            setTimeout(() => document.getElementById('wordInput').classList.remove('wrong-flash'), 300);
+            combo = 0;
+            updateUI();
+        }
+    }
+
+    // Power-ups
+    function useSlowTime() {
+        if (powerups.slowTime <= 0) { showNotification('No slow time power-ups!'); return; }
+        slowTimeActive = true;
+        powerups.slowTime--;
+        showNotification('⏱️ TIME SLOWED! ⏱️');
+        setTimeout(() => { slowTimeActive = false; showNotification('Time returned to normal'); }, 5000);
+    }
+
+    function useFreeze() {
+        if (powerups.freeze <= 0) { showNotification('No freeze power-ups!'); return; }
+        freezeActive = true;
+        powerups.freeze--;
+        showNotification('❄️ WORDS FROZEN! ❄️');
+        setTimeout(() => { freezeActive = false; showNotification('Words unfrozen'); }, 3000);
+    }
+
+    function useNuke() {
+        if (powerups.nuke <= 0) { showNotification('No nuke power-ups!'); return; }
+        fallingWords = [];
+        powerups.nuke--;
+        showNotification('💣 ALL WORDS DESTROYED! 💣');
+        const rect = canvas.getBoundingClientRect();
+        createExplosion(rect.left + canvas.width/2, rect.top + canvas.height/2);
+    }
+
+    function useShield() {
+        if (powerups.shield <= 0) { showNotification('No shield power-ups!'); return; }
+        shieldActive = true;
+        powerups.shield--;
+        showNotification('🛡️ SHIELD ACTIVATED! 🛡️');
+        setTimeout(() => { shieldActive = false; showNotification('Shield expired'); }, 8000);
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0f1724";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        for (let w of fallingWords) {
+            if (w.isBoss) {
+                ctx.fillStyle = "#ff8888";
+                ctx.font = "bold 32px monospace";
+            } else if (w.isGolden) {
+                ctx.fillStyle = "#facc15";
+                ctx.font = "bold 28px monospace";
+            } else {
+                ctx.fillStyle = "#fbbf24";
+                ctx.font = "bold 26px monospace";
+            }
+            ctx.fillText(w.text, w.x, w.y);
+            ctx.fillStyle = "#ff6b6b";
+            ctx.font = "18px monospace";
+            ctx.fillText("▼", w.x + 5, w.y + 12);
+        }
+        
+        ctx.beginPath();
+        ctx.strokeStyle = "#facc15";
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8, 12]);
+        ctx.moveTo(0, canvas.height - 25);
+        ctx.lineTo(canvas.width, canvas.height - 25);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        ctx.font = "bold 14px monospace";
+        ctx.fillStyle = "#cbd5e1";
+        ctx.fillText(`🔥 COMBO x${combo}`, 15, 35);
+        if (slowTimeActive) ctx.fillText("⏱️ SLOW TIME", 15, 55);
+        if (freezeActive) ctx.fillText("❄️ FREEZE", 15, 75);
+        if (shieldActive) ctx.fillText("🛡️ SHIELD", 15, 95);
+    }
+
+    let frameCount = 0;
+    function gameLoop() {
+        if (!gameActive) { draw(); return; }
+        
+        frameCount++;
+        if (frameCount >= spawnDelay) {
+            frameCount = 0;
+            spawnWord();
+        }
+        
+        updateGame();
+        draw();
+        animationId = requestAnimationFrame(gameLoop);
     }
 
     async function updateGlobalLeaderboard() {
         try {
-            const leaderboard = await apiCall('/leaderboard');
+            const response = await fetch(`${API_URL}/leaderboard`);
+            const leaderboard = await response.json();
             const listElement = document.getElementById('leaderboardList');
             listElement.innerHTML = '';
             if (leaderboard.length === 0) {
@@ -914,248 +1018,51 @@
         }
     }
 
-    async function signup(username, password) {
-        try {
-            const data = await apiCall('/signup', 'POST', { username, password });
-            currentUser = data.username;
-            currentUserBest = data.bestScore;
-            document.getElementById('currentUser').innerText = currentUser;
-            document.getElementById('userBestScore').innerText = currentUserBest;
-            document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-            document.getElementById('authForm').style.display = 'none';
-            document.getElementById('userInfo').style.display = 'block';
-            document.getElementById('wordInput').disabled = false;
-            document.getElementById('rewardLifeBtn').disabled = false;
-            document.getElementById('wordInput').placeholder = "Logged in! Press START...";
-            updateGlobalLeaderboard();
-            return true;
-        } catch (error) {
-            alert(error.message);
-            return false;
-        }
-    }
-
-    async function login(username, password) {
-        try {
-            const data = await apiCall('/login', 'POST', { username, password });
-            currentUser = data.username;
-            currentUserBest = data.bestScore;
-            document.getElementById('currentUser').innerText = currentUser;
-            document.getElementById('userBestScore').innerText = currentUserBest;
-            document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-            document.getElementById('authForm').style.display = 'none';
-            document.getElementById('userInfo').style.display = 'block';
-            document.getElementById('wordInput').disabled = false;
-            document.getElementById('rewardLifeBtn').disabled = false;
-            document.getElementById('wordInput').placeholder = "Logged in! Press START...";
-            updateGlobalLeaderboard();
-            return true;
-        } catch (error) {
-            alert(error.message);
-            return false;
-        }
-    }
-
-    async function updateUserBestScore(score) {
-        if (!currentUser) return;
-        if (score > currentUserBest) {
-            try {
-                const data = await apiCall('/update-score', 'POST', { username: currentUser, score });
-                currentUserBest = data.bestScore;
-                document.getElementById('userBestScore').innerText = currentUserBest;
-                document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-                updateGlobalLeaderboard();
-            } catch (error) {
-                console.error('Failed to update score:', error);
-            }
-        }
-    }
-
-    function logout() {
-        currentUser = null;
-        currentUserBest = 0;
-        document.getElementById('authForm').style.display = 'block';
-        document.getElementById('userInfo').style.display = 'none';
-        document.getElementById('wordInput').disabled = true;
-        document.getElementById('rewardLifeBtn').disabled = true;
-        document.getElementById('wordInput').placeholder = "LOGIN TO PLAY...";
-        document.getElementById('bestScoreDisplay').innerText = '0';
-        if (gameActive) {
-            gameActive = false;
-            if (animationId) cancelAnimationFrame(animationId);
-            enableStartOverlay(true);
-        }
-        updateGlobalLeaderboard();
-    }
-
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    let width = 700, height = 450;
-    canvas.width = width; canvas.height = height;
-
-    let score = 0, level = 1, lives = 10, gameActive = false, animationId = null;
-    const POINTS_PER_LEVEL = 20;
-    let pointsInCurrentLevel = 0;
-
-    const baseWordPool = [
-        "CAT","DOG","SUN","CAR","BALL","TREE","FISH","BIRD","STAR","MOON",
-        "HAT","CUP","BAG","ANT","BEE","EGG","EYE","ARM","LEG","TOY",
-        "RED","BLUE","BIG","HOT","COLD","WET","DRY","FUN","RUN","JUMP",
-        "FLY","BUG","FOX","PIG","COW","RAT","LIP","TOE","EAR","NOSE"
-    ];
-    const advancedWords = ["CLOUD","FLOWER","CANDY","PUPPY","KITTEN","TIGER","EAGLE","HAPPY"];
-    const bossWords = ["!!!BOSS!!!","RAINBOW","DRAGON"];
-
-    function getCurrentWordPool() {
-        let pool = [...baseWordPool];
-        if (level >= 5) pool.push(...advancedWords);
-        if (level >= 10) pool.push(...bossWords);
-        return pool;
-    }
-
-    let fallingWords = [];
-    let framesSinceLastSpawn = 0;
-    let spawnDelayFrames = 70;
-    let currentSpeedMultiplier = 0.5;
-    let currentSpawnDelay = 70;
-    let currentInput = "";
-
-    const wordInput = document.getElementById('wordInput');
-    const startOverlay = document.getElementById('startOverlay');
-    const startBtn = document.getElementById('startGameBtn');
-    const rewardBtn = document.getElementById('rewardLifeBtn');
-    const restartBtn = document.getElementById('restartBtn');
-
-    function updateProgressBar() {
-        const pct = (pointsInCurrentLevel / POINTS_PER_LEVEL) * 100;
-        document.getElementById('progressFill').style.width = pct + '%';
-        document.getElementById('progressText').innerHTML = `${pointsInCurrentLevel} / ${POINTS_PER_LEVEL}`;
-    }
-
-    function updateUI() {
-        document.getElementById('scoreValue').innerText = score;
-        document.getElementById('livesValue').innerText = lives;
-        document.getElementById('levelValue').innerText = level;
-        if (currentUser) document.getElementById('bestScoreDisplay').innerText = currentUserBest;
-    }
-
-    function randomWord() {
-        const pool = getCurrentWordPool();
-        return pool[Math.floor(Math.random() * pool.length)];
-    }
-
-    function spawnWord() {
-        if (!gameActive) return;
-        const wordText = randomWord();
-        const x = 20 + Math.random() * (width - 80);
-        let speed = 0.35 + Math.random() * 0.65;
-        speed *= currentSpeedMultiplier;
-        let points = 1, isBoss = false;
-        if (bossWords.includes(wordText)) { points = 3; isBoss = true; speed *= 0.5; }
-        else if (advancedWords.includes(wordText)) points = 2;
-        fallingWords.push({ text: wordText, x, y: 20, speed, points, isBoss });
-    }
-
-    function updateLevel() {
-        let newLevel = Math.floor(score / POINTS_PER_LEVEL) + 1;
-        if (newLevel > 20) newLevel = 20;
-        if (newLevel !== level) {
-            level = newLevel;
-            updateUI();
-            const div = document.createElement('div');
-            div.className = 'level-up-animation';
-            div.textContent = `✨ LEVEL ${level} ✨`;
-            document.body.appendChild(div);
-            setTimeout(() => div.remove(), 1000);
-            currentSpawnDelay = Math.max(40, 70 - (level-1)*1);
-            currentSpeedMultiplier = 0.5 + (level-1)*0.025;
-            if (currentSpeedMultiplier > 1.15) currentSpeedMultiplier = 1.15;
-            spawnDelayFrames = currentSpawnDelay;
-        }
-        pointsInCurrentLevel = score % POINTS_PER_LEVEL;
-        updateProgressBar();
-    }
-
-    function updateWords() {
-        if (!gameActive) return;
-        for (let i=0; i<fallingWords.length; i++) {
-            fallingWords[i].y += fallingWords[i].speed;
-            if (fallingWords[i].y + 25 >= height) {
-                fallingWords.splice(i,1);
-                i--;
-                lives--;
-                updateUI();
-                
-                if (lives <= 0) {
-                    gameActive = false;
-                    if (currentUser) updateUserBestScore(score);
-                    if (animationId) cancelAnimationFrame(animationId);
-                    animationId = null;
-                    draw();
-                    showGameOverPopup(() => { restartGame(); });
-                    return;
-                }
-            }
-        }
-    }
-
-    function autoShootIfMatches() {
-        if (!gameActive || !currentInput.trim()) return false;
-        const upper = currentInput.trim().toUpperCase();
-        for (let i=0; i<fallingWords.length; i++) {
-            if (fallingWords[i].text === upper) {
-                score += fallingWords[i].points;
-                fallingWords.splice(i,1);
-                updateUI();
-                updateLevel();
-                currentInput = "";
-                wordInput.value = "";
-                wordInput.style.backgroundColor = "#bbf7d0";
-                setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 150);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function clearInputWithFeedback() {
-        if (currentInput.length) {
-            currentInput = "";
-            wordInput.value = "";
-            wordInput.style.backgroundColor = "#dbeafe";
-            setTimeout(() => wordInput.style.backgroundColor = "#f1f5f9", 200);
-        }
-    }
-
-    function enableStartOverlay(show) {
-        startOverlay.style.display = show ? 'flex' : 'none';
-        if (!show && currentUser) wordInput.focus();
-    }
-
-    function startGame() {
+    // Event listeners
+    document.getElementById('startGameBtn').onclick = () => {
         if (!currentUser) { alert("Please login first!"); return; }
         gameActive = true;
-        score = 0; level = 1; lives = 10; pointsInCurrentLevel = 0;
-        fallingWords = []; framesSinceLastSpawn = 0;
-        currentSpeedMultiplier = 0.5; spawnDelayFrames = 70;
-        currentInput = ""; wordInput.value = "";
-        updateUI(); updateProgressBar();
-        enableStartOverlay(false);
+        score = 0; level = 1; lives = 10; combo = 0; streak = 0; totalKills = 0;
+        fallingWords = [];
+        currentSpeed = 0.5;
+        spawnDelay = 70;
+        powerups = { slowTime: 0, freeze: 0, nuke: 0, shield: 0 };
+        pointsInCurrentLevel = 0;
+        currentInput = "";
+        document.getElementById('wordInput').value = "";
+        document.getElementById('startOverlay').style.display = 'none';
+        document.getElementById('wordInput').disabled = false;
+        document.getElementById('rewardLifeBtn').disabled = false;
+        updateUI();
+        updateProgress();
         if (animationId) cancelAnimationFrame(animationId);
         animationId = requestAnimationFrame(gameLoop);
-        wordInput.focus();
-    }
+        document.getElementById('wordInput').focus();
+        showNotification('🎮 GAME STARTED! Good luck! 🎮');
+    };
 
-    function restartGame() {
+    document.getElementById('restartBtn').onclick = () => {
         if (!currentUser) { alert("Please login first!"); return; }
         if (animationId) cancelAnimationFrame(animationId);
-        startGame();
-    }
+        document.getElementById('startGameBtn').click();
+    };
 
-    function addLifeViaRewardedAd() {
+    document.getElementById('slowTimeBtn').onclick = useSlowTime;
+    document.getElementById('freezeBtn').onclick = useFreeze;
+    document.getElementById('nukeBtn').onclick = useNuke;
+    document.getElementById('shieldBtn').onclick = useShield;
+
+    document.getElementById('soundBtn').onclick = () => {
+        soundEnabled = !soundEnabled;
+        document.getElementById('soundBtn').innerText = soundEnabled ? "🔊 SOUND ON" : "🔇 SOUND OFF";
+        showNotification(soundEnabled ? "Sound enabled" : "Sound disabled");
+    };
+
+    document.getElementById('rewardLifeBtn').onclick = () => {
         if (!gameActive) { alert("Start a game first!"); return; }
         if (lives >= 12) { alert("Max lives is 12!"); return; }
         
+        const wasActive = gameActive;
         gameActive = false;
         if (animationId) {
             cancelAnimationFrame(animationId);
@@ -1167,77 +1074,54 @@
                 lives++;
                 updateUI();
                 draw();
+                showNotification('❤️ +1 LIFE ADDED! ❤️');
             }
             gameActive = true;
             animationId = requestAnimationFrame(gameLoop);
-            wordInput.focus();
+            document.getElementById('wordInput').focus();
         });
+    };
+
+    const wordInput = document.getElementById('wordInput');
+    wordInput.addEventListener('input', (e) => {
+        currentInput = e.target.value;
+        shootWord(e);
+    });
+    wordInput.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            currentInput = "";
+            wordInput.value = "";
+            showNotification('Input cleared!');
+        }
+    });
+
+    // Simple auth
+    function login() { 
+        currentUser = document.getElementById('loginUsername').value; 
+        if(!currentUser) { alert("Enter username"); return; }
+        currentUserBest = 0; 
+        document.getElementById('currentUser').innerText = currentUser; 
+        document.getElementById('userBestScore').innerText = '0';
+        document.getElementById('bestScoreDisplay').innerText = '0';
+        document.getElementById('userInfo').style.display = 'block'; 
+        document.getElementById('authForm').style.display = 'none'; 
+        showNotification(`Welcome ${currentUser}!`);
+        updateGlobalLeaderboard();
+    }
+    function signup() { login(); }
+    function logout() { 
+        currentUser = null; 
+        document.getElementById('userInfo').style.display = 'none'; 
+        document.getElementById('authForm').style.display = 'block'; 
+        document.getElementById('wordInput').disabled = true;
+        document.getElementById('rewardLifeBtn').disabled = true;
+        showNotification('Logged out'); 
+        updateGlobalLeaderboard();
     }
 
-    function draw() {
-        ctx.clearRect(0,0,width,height);
-        ctx.fillStyle = "#0f1724"; ctx.fillRect(0,0,width,height);
-        for (let w of fallingWords) {
-            ctx.fillStyle = w.isBoss ? "#ff8888" : (w.points===2 ? "#c084fc" : "#fbbf24");
-            ctx.font = "bold 26px 'Courier New', monospace";
-            ctx.shadowBlur = 4;
-            ctx.fillText(w.text, w.x, w.y);
-            ctx.fillStyle = "#ff6b6b";
-            ctx.font = "18px monospace";
-            ctx.fillText("▼", w.x+5, w.y+12);
-        }
-        ctx.beginPath();
-        ctx.strokeStyle = "#facc15";
-        ctx.lineWidth = 3;
-        ctx.setLineDash([8,12]);
-        ctx.moveTo(0,height-25);
-        ctx.lineTo(width,height-25);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        
-        if (!gameActive && lives<=0) {
-            ctx.font = "bold 30px 'Courier New', monospace";
-            ctx.fillStyle = "#ff8888";
-            ctx.fillText("💀 GAME OVER 💀", width/2-130, height/2);
-            ctx.font = "16px monospace";
-            ctx.fillStyle = "#cbd5e1";
-            ctx.fillText("Watch ad to restart...", width/2-110, height/2+40);
-        } else if (!gameActive && startOverlay.style.display !== 'flex') {
-            ctx.font = "bold 24px 'Courier New', monospace";
-            ctx.fillStyle = "#facc15";
-            ctx.fillText("⚡ PRESS START ⚡", width/2-110, height/2);
-        }
-        
-        if (gameActive && currentInput && !fallingWords.some(w=>w.text===currentInput.toUpperCase())) {
-            ctx.font = "italic 12px monospace";
-            ctx.fillStyle = "#facc15";
-            ctx.fillText("⚠️ Press SPACE to clear", 15, height-10);
-        }
-    }
-
-    function updateSpawner() {
-        if (!gameActive) return;
-        framesSinceLastSpawn++;
-        if (framesSinceLastSpawn >= spawnDelayFrames) {
-            framesSinceLastSpawn = 0;
-            spawnWord();
-            if (level>=12 && Math.random()<0.08) setTimeout(()=>spawnWord(),100);
-        }
-    }
-
-    function gameLoop() {
-        if (!gameActive && lives<=0) { draw(); animationId=null; return; }
-        updateSpawner(); updateWords(); draw();
-        animationId = requestAnimationFrame(gameLoop);
-    }
-
-    wordInput.addEventListener('input', (e) => { currentInput = e.target.value; autoShootIfMatches(); if(gameActive) wordInput.focus(); });
-    wordInput.addEventListener('keydown', (e) => { if(e.code==='Space' || e.code==='Escape') { e.preventDefault(); clearInputWithFeedback(); } });
-    startBtn.onclick = startGame;
-    restartBtn.onclick = restartGame;
-    rewardBtn.onclick = addLifeViaRewardedAd;
-    document.getElementById('loginBtn').onclick = () => login(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
-    document.getElementById('signupBtn').onclick = () => signup(document.getElementById('loginUsername').value, document.getElementById('loginPassword').value);
+    document.getElementById('loginBtn').onclick = login;
+    document.getElementById('signupBtn').onclick = signup;
     document.getElementById('logoutBtn').onclick = logout;
 
     updateGlobalLeaderboard();
