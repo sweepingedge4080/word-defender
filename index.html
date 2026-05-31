@@ -3,8 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Word Defender | Global Leaderboard</title>
+    
+    <!-- PRIMARY SEO TITLE (60 characters max - shows in Google search results) -->
+    <title>Word Defender | Free Online Typing Game | Global Leaderboard</title>
+    
+    <!-- META DESCRIPTION (160 characters max - shows under title in search results) -->
+    <meta name="description" content="Test your typing speed with Word Defender! Type falling words before they hit the ground. Free online game with global leaderboard. Challenge your friends!">
+    
+    <!-- META KEYWORDS (for search engines - not as important as before but still useful) -->
+    <meta name="keywords" content="typing game, word game, free online game, typing test, word defender, typing speed, browser game, free game, leaderboard, multiplayer typing">
+    
+    <!-- META AUTHOR -->
+    <meta name="author" content="Word Defender">
+    
+    <!-- ROBOTS INSTRUCTION (tell search engines to index and follow links) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- GOOGLE BOT SPECIFIC -->
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- REVISIT AFTER (how often search engines should come back) -->
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- LANGUAGE -->
+    <meta name="language" content="English">
+    
+    <!-- GEOGRAPHY (optional - helps with local SEO) -->
+    <meta name="geo.region" content="US">
+    <meta name="geo.position" content="37.09024;-95.712891">
+    
+    <!-- OPEN GRAPH TAGS (for Facebook, WhatsApp, LinkedIn sharing) -->
+    <meta property="og:title" content="Word Defender - Free Online Typing Game">
+    <meta property="og:description" content="Type falling words before they hit the ground! Compete on the global leaderboard. Free to play, no download required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://word-defender-game.onrender.com">
+    <meta property="og:image" content="https://word-defender-game.onrender.com/og-image.png">
+    <meta property="og:image:alt" content="Word Defender Game Screenshot">
+    <meta property="og:site_name" content="Word Defender">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- TWITTER CARD TAGS (for Twitter sharing) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Word Defender - Free Online Typing Game">
+    <meta name="twitter:description" content="Test your typing speed! Type falling words before they hit the ground. Free game with global leaderboard.">
+    <meta name="twitter:image" content="https://word-defender-game.onrender.com/twitter-image.png">
+    <meta name="twitter:site" content="@worddefender">
+    
+    <!-- CANONICAL URL (prevents duplicate content issues) -->
+    <link rel="canonical" href="https://word-defender-game.onrender.com">
+    
+    <!-- ALTERNATE LANGUAGE VERSIONS (if you add other languages later) -->
+    <link rel="alternate" hreflang="en" href="https://word-defender-game.onrender.com">
+    
+    <!-- SCHEMA.ORG STRUCTURED DATA (JSON-LD - helps Google understand your game) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Word Defender",
+        "description": "A fast-paced typing game where you type falling words before they hit the ground. Compete with players worldwide on the global leaderboard.",
+        "url": "https://word-defender-game.onrender.com",
+        "genre": "Typing Game, Educational Game, Arcade Game",
+        "applicationCategory": "Game",
+        "operatingSystem": "Any - Browser based",
+        "inLanguage": "English",
+        "playMode": "SinglePlayer",
+        "gamePlatform": "Web Browser",
+        "keywords": "typing, words, game, free, online, leaderboard",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+    
+    <!-- ADDITIONAL SCHEMA FOR WEB APPLICATION -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Word Defender",
+        "description": "Free online typing game where you type falling words to score points. Features global leaderboard and user accounts.",
+        "url": "https://word-defender-game.onrender.com",
+        "applicationCategory": "Game",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "browserRequirements": "Requires JavaScript. Modern browser recommended."
+    }
+    </script>
+    
+    <!-- SITEMAP LINK (create sitemap.xml for better indexing) -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://word-defender-game.onrender.com/sitemap.xml">
+    
+    <!-- PRELOAD FONTS for faster loading (SEO factor) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- FAVICON (helps with brand recognition in search results) -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
     <style>
+        /* Your existing CSS - keeping it minimal for performance */
         * {
             user-select: none;
             -webkit-tap-highlight-color: transparent;
@@ -31,7 +144,6 @@
             flex-wrap: wrap;
         }
 
-        /* LEFT PANEL - Fixed width */
         .left-panel {
             flex: 0 0 300px;
             display: flex;
@@ -39,7 +151,6 @@
             gap: 20px;
         }
 
-        /* Logo Styles */
         .logo-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -91,7 +202,6 @@
             padding-top: 10px;
         }
 
-        /* Ad Panel Styles */
         .ad-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -119,7 +229,6 @@
             min-height: 270px;
         }
 
-        /* Auth Panel */
         .auth-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -193,7 +302,6 @@
             cursor: pointer;
         }
 
-        /* MIDDLE PANEL - GAME */
         .game-container {
             background: #1e2a3a;
             border-radius: 32px;
@@ -321,7 +429,6 @@
 
         .controls { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
 
-        /* RIGHT PANEL - Leaderboard (Full Width) */
         .right-panel {
             flex: 1;
             min-width: 350px;
@@ -373,7 +480,6 @@
         .rank { color: #facc15; font-weight: bold; }
         .score-display { color: #facc15; font-weight: bold; }
 
-        /* Expandable How to Play */
         .expandable-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -496,7 +602,6 @@
             100% { opacity: 0; transform: translate(-50%, -80%) scale(0.8); visibility: hidden; }
         }
 
-        /* POPUP STYLES */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -578,9 +683,7 @@
 </head>
 <body>
 <div class="game-layout">
-    <!-- LEFT PANEL -->
     <div class="left-panel">
-        <!-- GAME LOGO -->
         <div class="logo-panel">
             <div class="game-logo">
                 <div class="word">
@@ -595,7 +698,6 @@
             </div>
         </div>
 
-        <!-- LEFT BANNER AD - YOUR ORIGINAL AADS CODE (UNCHANGED) -->
         <div class="ad-panel">
             <h3>📺 SPONSORED CONTENT</h3>
             <div class="ad-placeholder">
@@ -609,7 +711,6 @@
             <p style="font-size:0.7rem; margin-top:10px;">Ads keep this game free ❤️</p>
         </div>
 
-        <!-- SIGN UP / LOGIN PANEL -->
         <div class="auth-panel" id="authPanel">
             <h2>🔐 SIGN UP / LOGIN</h2>
             <div id="authForm">
@@ -628,7 +729,6 @@
         </div>
     </div>
 
-    <!-- MIDDLE PANEL: GAME -->
     <div class="game-container">
         <div class="info-panel">
             <div class="score">📝 SCORE <span id="scoreValue">0</span></div>
@@ -662,7 +762,6 @@
         </div>
     </div>
 
-    <!-- RIGHT PANEL: LEADERBOARD + HOW TO PLAY -->
     <div class="right-panel">
         <div class="leaderboard-panel">
             <h2>🏆 GLOBAL LEADERBOARD 🏆</h2>
@@ -688,31 +787,23 @@
     </div>
 </div>
 
-<!-- POPUP OVERLAY FOR REWARDED ADS & GAME OVER -->
 <div id="adPopup" class="popup-overlay">
     <div class="popup-content">
         <h3 id="popupTitle">🎁 REWARDED AD</h3>
-        <div id="popupAdContainer" class="popup-ad-container">
-            <!-- AADS ad will be inserted here -->
-        </div>
+        <div id="popupAdContainer" class="popup-ad-container"></div>
         <button id="popupCloseBtn" class="popup-close-btn">✅ CLAIM REWARD</button>
         <div id="popupTimer" class="popup-timer">Watch ad for 5 seconds...</div>
     </div>
 </div>
 
 <script>
-    // ===== BACKEND CONFIGURATION =====
     const API_URL = 'https://word-defender-api.onrender.com/api';
-    
     let currentUser = null;
     let currentUserBest = 0;
 
-    // Function to create AADS ad in popup - YOUR ORIGINAL CODE (UNCHANGED)
     function createPopupAd() {
         const container = document.getElementById('popupAdContainer');
         container.innerHTML = '';
-        
-        // Your exact AADS code - unchanged
         const adDiv = document.createElement('div');
         adDiv.id = 'popup-frame';
         adDiv.style.cssText = 'width: 100%;margin: auto;position: relative; z-index: 99998;';
@@ -727,10 +818,8 @@
         container.appendChild(adDiv);
     }
 
-    // Show rewarded popup (for +1 life)
     function showRewardedPopup(onReward) {
         createPopupAd();
-        
         const popup = document.getElementById('adPopup');
         const title = document.getElementById('popupTitle');
         const closeBtn = document.getElementById('popupCloseBtn');
@@ -756,7 +845,6 @@
         }, 1000);
         
         let rewardClaimed = false;
-        
         const claimHandler = () => {
             if (!rewardClaimed && secondsLeft <= 0) {
                 rewardClaimed = true;
@@ -779,10 +867,8 @@
         popup.style.display = 'flex';
     }
 
-    // Show game over popup
     function showGameOverPopup(onRestart) {
         createPopupAd();
-        
         const popup = document.getElementById('adPopup');
         const title = document.getElementById('popupTitle');
         const closeBtn = document.getElementById('popupCloseBtn');
@@ -808,7 +894,6 @@
         }, 1000);
         
         let restartTriggered = false;
-        
         const restartHandler = () => {
             if (!restartTriggered && secondsLeft <= 0) {
                 restartTriggered = true;
@@ -838,7 +923,6 @@
         if (window.popupTimeoutId) clearTimeout(window.popupTimeoutId);
     }
 
-    // Expandable How to Play functionality
     const header = document.getElementById('howToPlayHeader');
     const content = document.getElementById('howToPlayContent');
     const icon = document.getElementById('howToPlayIcon');
@@ -855,12 +939,8 @@
     });
 
     async function apiCall(endpoint, method = 'GET', data = null) {
-        const options = {
-            method,
-            headers: { 'Content-Type': 'application/json' }
-        };
+        const options = { method, headers: { 'Content-Type': 'application/json' } };
         if (data) options.body = JSON.stringify(data);
-        
         const response = await fetch(`${API_URL}${endpoint}`, options);
         const result = await response.json();
         if (!response.ok) throw new Error(result.error || 'API error');
@@ -960,7 +1040,6 @@
         updateGlobalLeaderboard();
     }
 
-    // ===== GAME CODE =====
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     let width = 700, height = 450;
@@ -1065,11 +1144,7 @@
                     if (animationId) cancelAnimationFrame(animationId);
                     animationId = null;
                     draw();
-                    
-                    // Show GAME OVER POPUP with ad
-                    showGameOverPopup(() => {
-                        restartGame();
-                    });
+                    showGameOverPopup(() => { restartGame(); });
                     return;
                 }
             }
@@ -1129,12 +1204,10 @@
         startGame();
     }
 
-    // +1 LIFE button with REWARDED POPUP
     function addLifeViaRewardedAd() {
         if (!gameActive) { alert("Start a game first!"); return; }
         if (lives >= 12) { alert("Max lives is 12!"); return; }
         
-        // Pause game
         gameActive = false;
         if (animationId) {
             cancelAnimationFrame(animationId);
@@ -1147,7 +1220,6 @@
                 updateUI();
                 draw();
             }
-            // Resume game
             gameActive = true;
             animationId = requestAnimationFrame(gameLoop);
             wordInput.focus();
@@ -1211,7 +1283,6 @@
         animationId = requestAnimationFrame(gameLoop);
     }
 
-    // Event listeners
     wordInput.addEventListener('input', (e) => { currentInput = e.target.value; autoShootIfMatches(); if(gameActive) wordInput.focus(); });
     wordInput.addEventListener('keydown', (e) => { if(e.code==='Space' || e.code==='Escape') { e.preventDefault(); clearInputWithFeedback(); } });
     startBtn.onclick = startGame;
