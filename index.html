@@ -3,121 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    
-    <!-- PRIMARY SEO TITLE (60 characters max - shows in Google search results) -->
     <title>Word Defender | Free Online Typing Game | Global Leaderboard</title>
-    
-    <!-- META DESCRIPTION (160 characters max - shows under title in search results) -->
     <meta name="description" content="Test your typing speed with Word Defender! Type falling words before they hit the ground. Free online game with global leaderboard. Challenge your friends!">
-    
-    <!-- META KEYWORDS (for search engines - not as important as before but still useful) -->
     <meta name="keywords" content="typing game, word game, free online game, typing test, word defender, typing speed, browser game, free game, leaderboard, multiplayer typing">
-    
-    <!-- META AUTHOR -->
     <meta name="author" content="Word Defender">
-    
-    <!-- ROBOTS INSTRUCTION (tell search engines to index and follow links) -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    
-    <!-- GOOGLE BOT SPECIFIC -->
     <meta name="googlebot" content="index, follow">
-    
-    <!-- REVISIT AFTER (how often search engines should come back) -->
     <meta name="revisit-after" content="7 days">
-    
-    <!-- LANGUAGE -->
     <meta name="language" content="English">
     
-    <!-- GEOGRAPHY (optional - helps with local SEO) -->
-    <meta name="geo.region" content="US">
-    <meta name="geo.position" content="37.09024;-95.712891">
-    
-    <!-- OPEN GRAPH TAGS (for Facebook, WhatsApp, LinkedIn sharing) -->
+    <!-- Open Graph Tags -->
     <meta property="og:title" content="Word Defender - Free Online Typing Game">
     <meta property="og:description" content="Type falling words before they hit the ground! Compete on the global leaderboard. Free to play, no download required.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://word-defender-game.onrender.com">
-    <meta property="og:image" content="https://word-defender-game.onrender.com/og-image.png">
-    <meta property="og:image:alt" content="Word Defender Game Screenshot">
     <meta property="og:site_name" content="Word Defender">
     <meta property="og:locale" content="en_US">
     
-    <!-- TWITTER CARD TAGS (for Twitter sharing) -->
+    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Word Defender - Free Online Typing Game">
     <meta name="twitter:description" content="Test your typing speed! Type falling words before they hit the ground. Free game with global leaderboard.">
-    <meta name="twitter:image" content="https://word-defender-game.onrender.com/twitter-image.png">
-    <meta name="twitter:site" content="@worddefender">
     
-    <!-- CANONICAL URL (prevents duplicate content issues) -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://word-defender-game.onrender.com">
     
-    <!-- ALTERNATE LANGUAGE VERSIONS (if you add other languages later) -->
-    <link rel="alternate" hreflang="en" href="https://word-defender-game.onrender.com">
-    
-    <!-- SCHEMA.ORG STRUCTURED DATA (JSON-LD - helps Google understand your game) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Word Defender",
-        "description": "A fast-paced typing game where you type falling words before they hit the ground. Compete with players worldwide on the global leaderboard.",
-        "url": "https://word-defender-game.onrender.com",
-        "genre": "Typing Game, Educational Game, Arcade Game",
-        "applicationCategory": "Game",
-        "operatingSystem": "Any - Browser based",
-        "inLanguage": "English",
-        "playMode": "SinglePlayer",
-        "gamePlatform": "Web Browser",
-        "keywords": "typing, words, game, free, online, leaderboard",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1250",
-            "bestRating": "5",
-            "worstRating": "1"
-        }
-    }
-    </script>
-    
-    <!-- ADDITIONAL SCHEMA FOR WEB APPLICATION -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Word Defender",
-        "description": "Free online typing game where you type falling words to score points. Features global leaderboard and user accounts.",
-        "url": "https://word-defender-game.onrender.com",
-        "applicationCategory": "Game",
-        "operatingSystem": "All",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "browserRequirements": "Requires JavaScript. Modern browser recommended."
-    }
-    </script>
-    
-    <!-- SITEMAP LINK (create sitemap.xml for better indexing) -->
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://word-defender-game.onrender.com/sitemap.xml">
-    
-    <!-- PRELOAD FONTS for faster loading (SEO factor) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- FAVICON (helps with brand recognition in search results) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     
     <style>
-        /* Your existing CSS - keeping it minimal for performance */
         * {
             user-select: none;
             -webkit-tap-highlight-color: transparent;
@@ -132,6 +46,8 @@
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            /* Add padding-left to account for the new sticky ad */
+            padding-left: 140px;
         }
 
         .game-layout {
@@ -144,6 +60,7 @@
             flex-wrap: wrap;
         }
 
+        /* LEFT PANEL - Fixed width */
         .left-panel {
             flex: 0 0 300px;
             display: flex;
@@ -151,6 +68,7 @@
             gap: 20px;
         }
 
+        /* Logo Styles */
         .logo-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -202,6 +120,7 @@
             padding-top: 10px;
         }
 
+        /* Ad Panel Styles */
         .ad-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -229,6 +148,7 @@
             min-height: 270px;
         }
 
+        /* Auth Panel */
         .auth-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -302,6 +222,7 @@
             cursor: pointer;
         }
 
+        /* MIDDLE PANEL - GAME */
         .game-container {
             background: #1e2a3a;
             border-radius: 32px;
@@ -429,6 +350,7 @@
 
         .controls { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
 
+        /* RIGHT PANEL - Leaderboard (Full Width) */
         .right-panel {
             flex: 1;
             min-width: 350px;
@@ -480,6 +402,7 @@
         .rank { color: #facc15; font-weight: bold; }
         .score-display { color: #facc15; font-weight: bold; }
 
+        /* Expandable How to Play */
         .expandable-panel {
             background: linear-gradient(135deg, #1e293b, #0f1724);
             border-radius: 28px;
@@ -602,6 +525,7 @@
             100% { opacity: 0; transform: translate(-50%, -80%) scale(0.8); visibility: hidden; }
         }
 
+        /* POPUP STYLES */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -675,13 +599,44 @@
             margin-top: 10px;
         }
 
+        /* Adjust body padding for small screens */
         @media (max-width: 1100px) {
+            body {
+                padding-left: 20px;
+            }
             .game-layout { flex-direction: column; align-items: center; }
             .left-panel, .right-panel { width: 100%; max-width: 500px; }
+            .sticky-side-ad {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- NEW STICKY SIDEBAR AD - AADS STICKY AD UNIT 2440147 -->
+    <!-- BEGIN AADS AD UNIT 2440147 -->
+    <div style="position: fixed; left: 0; top: 50%; transform: translateY(-50%); z-index: 99999;">
+        <input autocomplete="off" type="checkbox" id="aadsstickymptqm323" hidden />
+        <div style="padding-top: 0; padding-bottom: 0;">
+            <div style="width:100px;height:auto;text-align:center;font-size:0;min-width:100px">
+                <label for="aadsstickymptqm323" style="bottom: 24px;margin:0 auto;right:0;left:0;max-width:24px; position: absolute;border-radius: 4px; background: rgba(248, 248, 249, 0.70); padding: 4px;z-index: 99999;cursor:pointer">
+                    <svg fill="#000000" height="16px" width="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
+                        <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337 "/>
+                    </svg>
+                </label>
+                <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;height:auto; display: flex;flex-direction: column; justify-content: center">
+                    <iframe data-aa=2440147 src=//acceptable.a-ads.com/2440147/?size=Adaptive style='border:0; padding:0; width:100%; height:auto; overflow:hidden; margin: 0 auto'></iframe>
+                </div>
+            </div>
+            <style>
+                #aadsstickymptqm323:checked + div {
+                    display: none;
+                }
+            </style>
+        </div>
+    </div>
+    <!-- END AADS AD UNIT 2440147 -->
+
 <div class="game-layout">
     <div class="left-panel">
         <div class="logo-panel">
@@ -698,6 +653,7 @@
             </div>
         </div>
 
+        <!-- LEFT BANNER AD - YOUR ORIGINAL AADS CODE -->
         <div class="ad-panel">
             <h3>📺 SPONSORED CONTENT</h3>
             <div class="ad-placeholder">
@@ -787,6 +743,7 @@
     </div>
 </div>
 
+<!-- POPUP OVERLAY FOR REWARDED ADS & GAME OVER -->
 <div id="adPopup" class="popup-overlay">
     <div class="popup-content">
         <h3 id="popupTitle">🎁 REWARDED AD</h3>
